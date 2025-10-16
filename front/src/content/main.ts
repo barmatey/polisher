@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import Content from './content.vue';
 
 // 1. Создаём контейнер прямо на странице
@@ -19,3 +19,6 @@ document.body.appendChild(container);
 
 // 3. Монтируем Vue
 createApp(Content).mount('#my-vue-extension-root');
+
+
+console.log('CONTENT JS');
