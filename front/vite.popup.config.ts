@@ -21,7 +21,7 @@ export default defineConfig({
             },
             external: [],
         },
-        outDir: 'dist/popup',
+        outDir: 'dist',
         emptyOutDir: true,
     }
 })

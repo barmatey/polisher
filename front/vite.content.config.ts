@@ -9,7 +9,7 @@ export default defineConfig({
             input: 'src/content/main.ts',
             output: {
                 format: 'iife',
-                entryFileNames: 'content/content.js',
+                entryFileNames: 'content.js',
             },
         },
         outDir: 'dist/content',
