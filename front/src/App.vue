@@ -1,22 +1,29 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import {ref} from "vue";
+
+const name = ref("");
+
+function sendMsgToBg() {
+  // chrome.runtime.sendMessage(
+  //     { action: "greet", message: { name: name.value } },
+  //     (response) => {
+  //       if (chrome.runtime.lastError) {
+  //         alert(chrome.runtime.lastError);
+  //       } else {
+  //         console.log('bg sent this: ', response)
+  //         alert(`Response from background: ${response.message}`);
+  //       }
+  //     }
+  // );
+}
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div>
+    <button @click="sendMsgToBg"> Hello</button>
+    , I am: <input v-model="name"/>
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
