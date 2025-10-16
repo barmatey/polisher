@@ -6,7 +6,8 @@
   "scripts": {
     "build:popup": "vite build --config vite.popup.config.js",
     "build:content": "vite build --config vite.content.config.js",
-    "build:all": "npm run build:popup && npm run build:content"
+    "build:background": "vite build --config vite.background.config.js",
+    "build:all": "npm run build:popup && npm run build:content && npm run build:background"
   },
   "dependencies": {
     "vite-plugin-static-copy": "^3.1.4",
