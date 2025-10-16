@@ -1,8 +1,6 @@
-// vite.config.js
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-// the below import needs to be added
 import {viteStaticCopy} from 'vite-plugin-static-copy'
 import {fileURLToPath} from "node:url";
 
@@ -14,12 +12,12 @@ export default defineConfig({
         vueDevTools(),
         viteStaticCopy({
             targets: [
+                // {
+                //     src: 'src/background/main.ts', // Source path
+                //     dest: 'background', // Destination folder inside dist
+                // },
                 {
-                    src: 'src/background/background.ts', // Source path
-                    dest: 'background', // Destination folder inside dist
-                },
-                {
-                    src: 'index.html', // Source path
+                    src: 'src/popup/index.html', // Source path
                     dest: '' // Destination folder is dist itself
                 }
             ],
@@ -33,14 +31,11 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
-                popup: "src/main.ts",
-                content: 'src/content/main.ts', // Build `main.js` as the content script
-                background: 'src/background/background.ts', // Add `background.js` as another entry point
+                popup: "src/popup/main.ts",
             },
             output: {
+                format: 'iife',
                 entryFileNames: (chunkInfo) => {
-                    if (chunkInfo.name === 'content') return 'content/content.js';
-                    if (chunkInfo.name === 'background') return 'background/background.js';
                     if (chunkInfo.name === 'popup') return 'main.js';
                     throw Error(`Unknown chunk ${chunkInfo.name}`);
                 },
