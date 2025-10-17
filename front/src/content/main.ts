@@ -1,17 +1,27 @@
-const container = document.createElement('div');
-container.id = 'my-vue-extension-root';
+// content.ts
+import { createApp } from 'vue'
+import Content from './content.vue'
 
-container.style.width = '222px';
-container.style.height = '222px';
-container.style.position = 'fixed';
-container.style.top = '50px';
-container.style.right = '0';
-container.style.zIndex = '9999';
-container.style.backgroundColor = 'lightgreen';
-container.style.padding = '10px';
+// 1. Создаём контейнер для Vue
+const container = document.createElement('div')
+container.id = 'my-vue-extension-root'
+
+// задаём базовые стили, чтобы было видно
+Object.assign(container.style, {
+    position: 'fixed',
+    top: '50px',
+    right: '0',
+    width: '300px',
+    height: '200px',
+    zIndex: '9999',
+    backgroundColor: 'red',
+    padding: '10px'
+})
 
 // 2. Добавляем в body
-document.body.appendChild(container);
+document.body.appendChild(container)
 
+// 3. Монтируем Vue компонент
+createApp(Content).mount('#my-vue-extension-root')
 
-console.log('CONTENT JS');
+console.log('CONTENT JS')
