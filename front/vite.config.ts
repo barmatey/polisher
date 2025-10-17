@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { fileURLToPath } from 'node:url'
+import esbuild from 'rollup-plugin-esbuild'
 
 
 
@@ -27,11 +28,11 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
+            // @ts-ignore
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
     build: {
-        // target: 'es2015', // для совместимости с IIFE
         rollupOptions: {
             input: {
                 popup: 'src/popup/main.ts',
@@ -46,11 +47,7 @@ export default defineConfig({
                     if (chunkInfo.name === 'background') return 'background.js'
                     throw new Error(`Unknown chunk ${chunkInfo.name}`)
                 },
-                // format: 'iife', // для content и background
             },
         },
-        // commonjsOptions: {
-        //     include: [/node_modules/],
-        // },
     },
 })
