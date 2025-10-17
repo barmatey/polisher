@@ -1,27 +1,37 @@
 // content.ts
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import Content from './content.vue'
 
-// 1. Создаём контейнер для Vue
-const container = document.createElement('div')
-container.id = 'my-vue-extension-root'
+// 1. Создаём контейнер для Vue панели
+const sidebar = document.createElement('div')
+sidebar.id = 'my-vue-extension-root'
 
-// задаём базовые стили, чтобы было видно
-Object.assign(container.style, {
-    position: 'fixed',
-    top: '50px',
-    right: '0',
-    width: '300px',
-    height: '200px',
-    zIndex: '9999',
-    backgroundColor: 'red',
-    padding: '10px'
+// стили панели
+Object.assign(sidebar.style, {
+    width: '30rem',
+    backgroundColor: 'lightblue',
+    flexShrink: '0',           // чтобы не сжималась
+    padding: '0.5rem'
 })
 
-// 2. Добавляем в body
-document.body.appendChild(container)
+// 2. Создаём flex wrapper для всей страницы
+const wrapper = document.createElement('div')
+wrapper.style.display = 'flex'
+wrapper.style.flexDirection = 'row'
 
-// 3. Монтируем Vue компонент
+// Переносим весь контент body внутрь wrapper
+while (document.body.firstChild) {
+    wrapper.appendChild(document.body.firstChild)
+}
+
+// Добавляем панель справа
+wrapper.appendChild(sidebar)
+
+// Очищаем body и вставляем wrapper
+document.body.innerHTML = ''
+document.body.appendChild(wrapper)
+
+// 3. Монтируем Vue компонент в sidebar
 createApp(Content).mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')
