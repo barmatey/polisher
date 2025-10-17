@@ -1,8 +1,8 @@
 const container = document.createElement('div');
 container.id = 'my-vue-extension-root';
 
-container.style.width = '22px';
-container.style.height = '22px';
+container.style.width = '222px';
+container.style.height = '222px';
 container.style.position = 'fixed';
 container.style.top = '50px';
 container.style.right = '0';
