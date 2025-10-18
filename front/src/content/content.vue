@@ -3,6 +3,7 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import MyH2 from "../atoms/my-h2.vue";
 import FlexWrapper from "../atoms/flex-wrapper.vue";
+import PromptBtn from "../atoms/prompt-btn.vue";
 </script>
 
 <template>
@@ -18,7 +19,16 @@ import FlexWrapper from "../atoms/flex-wrapper.vue";
   >
     <flex-wrapper direction="column" :row-gap="4">
       <my-h1>{{ LOGO }}</my-h1>
-      <my-h2>Translate</my-h2>
+
+      <div>
+        <my-h2>Translate</my-h2>
+        <flex-wrapper :col-gap="3" style="margin-top: 0.5rem">
+          <prompt-btn>English</prompt-btn>
+          <prompt-btn>Russian</prompt-btn>
+          <prompt-btn>Chinese</prompt-btn>
+        </flex-wrapper>
+      </div>
+
     </flex-wrapper>
 
   </div>
