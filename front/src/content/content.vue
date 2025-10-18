@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {LOGO} from "../logo.ts";
+import MyH1 from "../atoms/my-h1.vue";
+import MyH2 from "../atoms/my-h2.vue";
 </script>
 
 <template>

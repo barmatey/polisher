@@ -1,9 +1,7 @@
-// vite.config.ts
 import { defineConfig } from 'vite'
 // @ts-ignore
 import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
-import { fileURLToPath } from 'node:url'
 
 
 
@@ -26,10 +24,6 @@ export default defineConfig({
 
     ],
     resolve: {
-        alias: {
-            // @ts-ignore
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
-        },
     },
     build: {
         rollupOptions: {
