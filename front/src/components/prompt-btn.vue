@@ -9,7 +9,11 @@ const p = withDefaults(defineProps<P>(), {})
 </script>
 
 <template>
-  <Button :label="p.label"/>
+  <Button
+      :label="p.label"
+      size="small"
+      rounded
+  />
 </template>
 
 <style scoped>
