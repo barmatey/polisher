@@ -10,7 +10,7 @@ import {WINDOW_PADDING} from "./config.ts";
 <template>
   <div
       :style="{
-        'padding': `${WINDOW_PADDING}px`,
+        'padding': `${WINDOW_PADDING}rem`,
         'background': '#213547',
         'color': '#fafafa',
         'height': '100%',

@@ -16,7 +16,7 @@ const showManageWindow = ref(false)
         position="topright"
         modal
         :style="{
-          'width': `${WINDOW_WIDTH - WINDOW_PADDING * 2}px`
+          'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
         }"
     >
       <div>Hello</div>

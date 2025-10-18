@@ -13,7 +13,7 @@ const marginRight = '500px'
 const sidebar = document.createElement('div')
 sidebar.id = 'my-vue-extension-root'
 Object.assign(sidebar.style, {
-    width: `${WINDOW_WIDTH}px`,
+    width: `${WINDOW_WIDTH}rem`,
     height: '100vh',
     position: 'fixed',
     top: '0',
