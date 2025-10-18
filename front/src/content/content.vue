@@ -3,12 +3,14 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import MyH2 from "../atoms/my-h2.vue";
 import PromptBtn from "../components/prompt-btn.vue";
+import ManageLang from "./translate/components/manage-lang/manage-lang.vue";
+import {WINDOW_PADDING} from "./config.ts";
 </script>
 
 <template>
   <div
       :style="{
-        'padding': '2rem',
+        'padding': `${WINDOW_PADDING}px`,
         'background': '#213547',
         'color': '#fafafa',
         'height': '100%',
@@ -26,6 +28,7 @@ import PromptBtn from "../components/prompt-btn.vue";
             <prompt-btn label="English"/>
             <prompt-btn label="Russian"/>
             <prompt-btn label="Chinese"/>
+            <manage-lang/>
           </div>
         </div>
       </div>

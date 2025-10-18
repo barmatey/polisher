@@ -3,23 +3,21 @@ import Content from './content.vue'
 import "../assets/colors.css"
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
-
+import {WINDOW_WIDTH} from "./config.ts";
 
 
 // 1. Размер панели
-const sidebarWidth = '480px' // px, например 30rem ~ 480px
 const marginRight = '500px'
 
 // 2. Создаём контейнер панели
 const sidebar = document.createElement('div')
 sidebar.id = 'my-vue-extension-root'
 Object.assign(sidebar.style, {
-    width: sidebarWidth,
+    width: `${WINDOW_WIDTH}px`,
     height: '100vh',
     position: 'fixed',
     top: '0',
     right: '0',
-    zIndex: '9999',
     overflowY: 'auto',
 })
 
