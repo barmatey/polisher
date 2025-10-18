@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+import SelectedText from "../components/selected-text.vue";
 </script>
 
 <template>
   <div class="content-wrapper">
-    CONTENT_PART
+    <selected-text/>
   </div>
 </template>
 
