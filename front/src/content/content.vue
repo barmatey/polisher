@@ -3,11 +3,13 @@
 </script>
 
 <template>
-<div>
-  CONTENT_PART
-</div>
+  <div class="content-wrapper">
+    CONTENT_PART
+  </div>
 </template>
 
 <style scoped>
-
+.content-wrapper {
+  background: red;
+}
 </style>

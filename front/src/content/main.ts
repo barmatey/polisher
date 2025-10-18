@@ -1,5 +1,6 @@
 import {createApp} from 'vue'
 import Content from './content.vue'
+import "../assets/colors.css"
 
 // 1. Размер панели
 const sidebarWidth = '480px' // px, например 30rem ~ 480px
@@ -14,7 +15,6 @@ Object.assign(sidebar.style, {
     position: 'fixed',
     top: '0',
     right: '0',
-    backgroundColor: 'lightblue',
     zIndex: '9999',
     overflowY: 'auto',
 })
