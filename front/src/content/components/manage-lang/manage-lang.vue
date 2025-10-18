@@ -2,14 +2,14 @@
 import {Dialog} from "primevue";
 import AddBtn from "./add-btn.vue";
 import {ref} from "vue";
-import {WINDOW_PADDING, WINDOW_WIDTH} from "../../../config.ts";
+import {WINDOW_PADDING, WINDOW_WIDTH} from "../../config.ts";
 
-const showManageWindow = ref(true)
+const showManageWindow = ref(false)
 </script>
 
 <template>
   <div>
-    <add-btn/>
+    <add-btn @click="() => showManageWindow = !showManageWindow"/>
     <Dialog
         header="Manage Languages"
         v-model:visible="showManageWindow"

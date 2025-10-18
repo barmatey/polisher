@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {LOGO} from "../logo.ts";
-import MyH1 from "../atoms/my-h1.vue";
-import MyH2 from "../atoms/my-h2.vue";
-import PromptBtn from "../components/prompt-btn.vue";
-import ManageLang from "./translate/components/manage-lang/manage-lang.vue";
+import MyH1 from "./atoms/my-h1.vue";
+import MyH2 from "./atoms/my-h2.vue";
+import PromptBtn from "./components/prompt-btn.vue";
+import ManageLang from "./components/manage-lang/manage-lang.vue";
 import {WINDOW_PADDING} from "./config.ts";
 </script>
 

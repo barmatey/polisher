@@ -1,10 +1,15 @@
 <script setup lang="ts">
+
 import {Button} from "primevue";
 </script>
 
 <template>
   <Button
-      label="Manage"
+      size="small"
+      rounded
+      :style="{
+      'height': '2rem'
+    }"
   />
 </template>
 

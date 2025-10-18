@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Button} from "primevue";
+import MyButton from "../atoms/my-button.vue";
 
 interface P {
   label: string
@@ -9,11 +9,7 @@ const p = withDefaults(defineProps<P>(), {})
 </script>
 
 <template>
-  <Button
-      :label="p.label"
-      size="small"
-      rounded
-  />
+  <my-button :label="p.label"/>
 </template>
 
 <style scoped>
