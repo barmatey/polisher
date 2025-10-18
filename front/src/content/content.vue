@@ -2,7 +2,6 @@
 import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import MyH2 from "../atoms/my-h2.vue";
-import FlexWrapper from "../atoms/flex-wrapper.vue";
 import PromptBtn from "../components/prompt-btn.vue";
 </script>
 
@@ -17,19 +16,21 @@ import PromptBtn from "../components/prompt-btn.vue";
         'border-bottom-left-radius': '1rem',
       }"
   >
-    <flex-wrapper direction="column" :row-gap="4">
+    <div class="flex flex-col gap-4">
       <my-h1>{{ LOGO }}</my-h1>
 
       <div>
-        <my-h2>Translate</my-h2>
-        <flex-wrapper :col-gap="3" style="margin-top: 0.5rem">
-          <prompt-btn label="English"/>
-          <prompt-btn label="Russian"/>
-          <prompt-btn label="Chinese"/>
-        </flex-wrapper>
+        <div>
+          <my-h2>Translate</my-h2>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <prompt-btn label="English"/>
+            <prompt-btn label="Russian"/>
+            <prompt-btn label="Chinese"/>
+          </div>
+        </div>
       </div>
 
-    </flex-wrapper>
+    </div>
 
   </div>
 </template>

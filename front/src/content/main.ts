@@ -1,7 +1,6 @@
 import {createApp} from 'vue'
 import Content from './content.vue'
 import "../assets/colors.css"
-import {components} from "./components.ts";
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 
@@ -32,9 +31,6 @@ document.body.style.marginRight = marginRight
 document.body.appendChild(sidebar)
 
 const app = createApp(Content)
-for (let [key, value] of Object.entries(components)) {
-    app.component(key, value)
-}
 
 // 5. Монтируем Vue компонент
 app
