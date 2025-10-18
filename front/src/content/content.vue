@@ -13,7 +13,8 @@ import {LOGO} from "../logo.ts";
         'border-bottom-left-radius': '1rem',
       }"
   >
-    <h1>{{ LOGO }}</h1>
+    <my-h1>{{ LOGO }}</my-h1>
+    <my-h2>Translate</my-h2>
   </div>
 </template>
 

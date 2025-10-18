@@ -1,6 +1,7 @@
 import {createApp} from 'vue'
 import Content from './content.vue'
 import "../assets/colors.css"
+import {components} from "./components.ts";
 
 // 1. Размер панели
 const sidebarWidth = '480px' // px, например 30rem ~ 480px
@@ -26,7 +27,12 @@ document.body.style.marginRight = marginRight
 // 3. Добавляем в body
 document.body.appendChild(sidebar)
 
+const app = createApp(Content)
+for (let [key, value] of Object.entries(components)) {
+    app.component(key, value)
+}
+
 // 5. Монтируем Vue компонент
-createApp(Content).mount('#my-vue-extension-root')
+app.mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')
