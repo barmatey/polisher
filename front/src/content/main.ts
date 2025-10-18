@@ -2,6 +2,10 @@ import {createApp} from 'vue'
 import Content from './content.vue'
 import "../assets/colors.css"
 import {components} from "./components.ts";
+import PrimeVue from 'primevue/config';
+import Aura from '@primeuix/themes/aura';
+
+
 
 // 1. Размер панели
 const sidebarWidth = '480px' // px, например 30rem ~ 480px
@@ -33,6 +37,12 @@ for (let [key, value] of Object.entries(components)) {
 }
 
 // 5. Монтируем Vue компонент
-app.mount('#my-vue-extension-root')
+app
+    .use(PrimeVue, {
+        theme: {
+            preset: Aura
+        }
+    })
+    .mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')

@@ -23,9 +23,9 @@ import PromptBtn from "../components/prompt-btn.vue";
       <div>
         <my-h2>Translate</my-h2>
         <flex-wrapper :col-gap="3" style="margin-top: 0.5rem">
-          <prompt-btn>English</prompt-btn>
-          <prompt-btn>Russian</prompt-btn>
-          <prompt-btn>Chinese</prompt-btn>
+          <prompt-btn label="English"/>
+          <prompt-btn label="Russian"/>
+          <prompt-btn label="Chinese"/>
         </flex-wrapper>
       </div>
 
