@@ -3,7 +3,7 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import MyH2 from "../atoms/my-h2.vue";
 import FlexWrapper from "../atoms/flex-wrapper.vue";
-import PromptBtn from "../atoms/prompt-btn.vue";
+import PromptBtn from "../components/prompt-btn.vue";
 </script>
 
 <template>
