@@ -5,14 +5,17 @@ import MyH2 from "./atoms/my-h2.vue";
 import PromptBtn from "./components/prompt-btn.vue";
 import ManageLang from "./components/manage-lang/manage-lang.vue";
 import {WINDOW_PADDING} from "./config.ts";
+
+
 </script>
 
 <template>
   <div
+      class="my-app-dark"
       :style="{
+        'background': 'oklch(29.3% 0.066 243.157)',
+        'color': 'white',
         'padding': `${WINDOW_PADDING}rem`,
-        'background': '#213547',
-        'color': '#fafafa',
         'height': '100%',
         'border-top-left-radius': '1rem',
         'border-bottom-left-radius': '1rem',
@@ -39,8 +42,5 @@ import {WINDOW_PADDING} from "./config.ts";
 </template>
 
 <style scoped>
-.temp {
-  background: #213547;
-  border-top-left-radius: 1rem;
-}
+
 </style>

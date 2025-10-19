@@ -34,7 +34,10 @@ const app = createApp(Content)
 app
     .use(PrimeVue, {
         theme: {
-            preset: Aura
+            preset: Aura,
+            options: {
+                darkModeSelector: '.my-app-dark',
+            }
         }
     })
     .mount('#my-vue-extension-root')

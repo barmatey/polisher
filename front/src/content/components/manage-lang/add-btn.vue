@@ -5,6 +5,7 @@ import MyButton from "../../atoms/my-button.vue";
 <template>
   <my-button
       label="Manage"
+      outlined
   />
 </template>
 
