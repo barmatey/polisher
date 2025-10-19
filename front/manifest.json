@@ -20,7 +20,9 @@
         "content/content.js"
       ],
       "css": [
-        "content/buttons.css"
+        "content/css/buttons.css",
+        "content/css/colors.css",
+        "content/css/gear.css"
       ]
     }
   ]
