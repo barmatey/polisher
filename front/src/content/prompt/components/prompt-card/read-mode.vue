@@ -9,7 +9,11 @@ const p = defineProps<P>()
 </script>
 
 <template>
-  {{ p.prompt }}
+  <div class="flex justify-between">
+    <div>{{ p.prompt.title }}</div>
+    <div>{{ p.prompt.hotkey }}</div>
+  </div>
+
 </template>
 
 <style scoped>

@@ -6,7 +6,8 @@ import IconCog from "../assets/icons/icon-cog.vue";
 import IconUser from "../assets/icons/icon-user.vue";
 
 interface P {
-  icon: "cog" | "user"
+  title: string
+  icon?: "cog" | "user"
 }
 
 const p = withDefaults(defineProps<P>(), {
@@ -42,7 +43,7 @@ const pt = {
         class="cursor-pointer"
     />
     <Dialog
-        header="Manage Languages"
+        :header="p.title"
         v-model:visible="showWindow"
         position="topright"
         :style="{
