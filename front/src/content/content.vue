@@ -14,7 +14,6 @@ import UserProfile from "./components/user-profile/user-profile.vue";
 
 <template>
   <div
-      class="my-app-dark"
       :style="{
         'background': 'oklch(29.3% 0.066 243.157)',
         'color': 'white',
