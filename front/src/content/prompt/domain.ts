@@ -8,3 +8,9 @@ export interface Prompt {
     order: number
     hotkey: string
 }
+
+export interface PromptForm {
+    title: string
+    text: string
+    hotkey: string
+}

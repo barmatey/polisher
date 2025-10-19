@@ -18,16 +18,16 @@ export function getPromptService(): PromptService {
                 order: 1,
                 hotkey: 'Ctrl+M',
             },
-            {
-                id: '2',
-                title: "Churchill",
-                category: "improve",
-                role: "system",
-                text: 'Any prompt text',
-                userId: '-1',
-                order: 2,
-                hotkey: 'Ctrl+O',
-            },
+            // {
+            //     id: '2',
+            //     title: "Churchill",
+            //     category: "improve",
+            //     role: "system",
+            //     text: 'Any prompt text',
+            //     userId: '-1',
+            //     order: 2,
+            //     hotkey: 'Ctrl+O',
+            // },
         ]
     }
 
