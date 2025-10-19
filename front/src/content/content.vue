@@ -7,6 +7,7 @@ import {WINDOW_PADDING} from "./config.ts";
 import TranslateStrategySelector from "./components/translate-strategy-selector.vue";
 import MyH3 from "./atoms/my-h3.vue";
 import TranslateSettings from "./components/translate-settings.vue";
+import ImproveSettings from "./components/improve-settings.vue";
 
 </script>
 
@@ -39,6 +40,19 @@ import TranslateSettings from "./components/translate-settings.vue";
         <div class="mt-4">
           <my-h3>Strategy:</my-h3>
           <translate-strategy-selector class="mt-2"/>
+        </div>
+      </div>
+
+      <div/>
+
+      <div>
+        <div class="flex justify-between">
+          <my-h2>Improve</my-h2>
+          <improve-settings/>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <prompt-btn label="Laconic"/>
+          <prompt-btn label="Churchill"/>
         </div>
 
       </div>
