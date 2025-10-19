@@ -21,7 +21,7 @@ import {WINDOW_PADDING} from "./config.ts";
         'border-bottom-left-radius': '1rem',
       }"
   >
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       <my-h1>{{ LOGO }}</my-h1>
 
       <div>

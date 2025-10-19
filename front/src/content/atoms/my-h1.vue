@@ -5,8 +5,9 @@
 <template>
 <h1
   :style="{
-    'margin': '0',
-    'font-size': '1.75rem',
+    margin: '0',
+    fontSize: '1.75rem',
+    fontWeight: 'lighter'
   }"
 >
   <slot>
