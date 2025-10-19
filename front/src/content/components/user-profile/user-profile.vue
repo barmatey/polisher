@@ -3,7 +3,7 @@ import MySettings from "../../atoms/my-settings.vue";
 import AuthUser from "./auth-user.vue";
 import UnauthUser from "./unauth-user.vue";
 
-const isAuthenticated = false
+const isAuthenticated = true
 
 function getComponent() {
   return isAuthenticated
