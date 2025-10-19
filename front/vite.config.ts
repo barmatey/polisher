@@ -16,6 +16,10 @@ export default defineConfig({
                     dest: '',
                 },
                 {
+                    src: 'src/assets/buttons.css', // popup html
+                    dest: 'content/',
+                },
+                {
                     src: 'manifest.json', // manifest
                     dest: '',
                 },
