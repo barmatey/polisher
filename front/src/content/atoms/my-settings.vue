@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import {WINDOW_PADDING, WINDOW_WIDTH} from "../config.ts";
-import {Button} from "primevue";
 import {ref} from "vue";
 import {Dialog} from "primevue";
+import IconCog from "../../assets/icons/icon-cog.vue";
 
 const showWindow = ref(false)
 </script>
 
 <template>
   <div>
-    <Button
+    <icon-cog
         @click="() => showWindow = !showWindow"
-        label="Settings"
-        size="small"
-        outlined
-        style="height: 2rem"
+        stroke-width="1.5"
+        class="cursor-pointer"
     />
     <Dialog
         header="Manage Languages"
@@ -24,7 +22,7 @@ const showWindow = ref(false)
           'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
         }"
     >
-        <div>Hello</div>
+      <div>Hello</div>
     </Dialog>
   </div>
 </template>
