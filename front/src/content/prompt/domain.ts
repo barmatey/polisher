@@ -1,6 +1,6 @@
 export interface Prompt {
     id: string
-    category: string
+    category: "translate" | "improve"
     role: "system" | "user"
     text: string
     userId: string
