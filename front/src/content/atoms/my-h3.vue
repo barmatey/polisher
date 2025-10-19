@@ -6,7 +6,7 @@
   <h3
       :style="{
         margin: '0',
-        fontSize: '1.15rem',
+        fontSize: '1.1rem',
         fontWeight: 'lighter',
       }"
   >
