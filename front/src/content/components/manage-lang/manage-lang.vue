@@ -14,7 +14,6 @@ const showManageWindow = ref(false)
         header="Manage Languages"
         v-model:visible="showManageWindow"
         position="topright"
-        modal
         :style="{
           'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
         }"
