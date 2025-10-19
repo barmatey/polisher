@@ -10,9 +10,9 @@ const p = defineProps<P>()
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between items-center">
     <div>{{ p.prompt.title }}</div>
-    <div class="flex gap-1">
+    <div class="flex gap-3 items-center">
       <div>{{ p.prompt.hotkey }}</div>
       <simple-menu/>
     </div>

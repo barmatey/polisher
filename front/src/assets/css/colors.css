@@ -1,4 +1,5 @@
 :root {
     --core-background: oklch(29.3% 0.066 243.157);
     --second-background: oklch(23.3% 0.066 243.157);
+    --text-secondary: oklch(95.1% 0.026 236.824);
 }

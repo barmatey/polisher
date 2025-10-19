@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <my-settings title="Improve buttons">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-3">
       <prompt-card
           :prompt="item"
           v-for="item in prompts"

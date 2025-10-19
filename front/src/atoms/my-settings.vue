@@ -46,6 +46,7 @@ const pt = {
         :header="p.title"
         v-model:visible="showWindow"
         position="topright"
+        modal
         :style="{
           'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
         }"

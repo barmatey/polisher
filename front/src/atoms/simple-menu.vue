@@ -2,6 +2,7 @@
 import {ref} from "vue";
 import {Button} from "primevue";
 import {Menu} from "primevue";
+import IconVdots from "../assets/icons/icon-vdots.vue";
 
 const menu = ref();
 const items = ref([
@@ -26,11 +27,15 @@ const toggle = (event: any) => {
         @click="toggle"
         aria-haspopup="true"
         aria-controls="overlay_menu"
-        size="small"
-        rounded
-        outlined
-        label="x"
-    />
+        :style="{
+          margin: 0,
+          padding: 0,
+          background: 'none',
+          border: 'none',
+        }"
+    >
+      <icon-vdots :style="{color: 'var(--text-secondary)'}"/>
+    </Button>
     <Menu ref="menu" id="overlay_menu" :model="items" :popup="true"/>
   </div>
 </template>
