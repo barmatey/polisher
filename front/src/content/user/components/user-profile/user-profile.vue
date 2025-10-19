@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MySettings from "../../atoms/my-settings.vue";
+import MySettings from "../../../../atoms/my-settings.vue";
 import AuthUser from "./auth-user.vue";
 import UnauthUser from "./unauth-user.vue";
 

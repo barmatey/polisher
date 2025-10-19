@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {LOGO} from "../logo.ts";
-import MyH1 from "./atoms/my-h1.vue";
-import MyH2 from "./atoms/my-h2.vue";
-import PromptBtn from "./components/prompt-btn.vue";
+import MyH1 from "../atoms/my-h1.vue";
+import MyH2 from "../atoms/my-h2.vue";
+import PromptBtn from "./prompt/components/prompt-btn.vue";
 import {WINDOW_PADDING} from "./config.ts";
-import TranslateStrategySelector from "./components/translate-strategy-selector.vue";
-import MyH3 from "./atoms/my-h3.vue";
-import TranslateSettings from "./components/translate-settings.vue";
-import ImproveSettings from "./components/improve-settings.vue";
-import UserProfile from "./components/user-profile/user-profile.vue";
+import TranslateStrategySelector from "./translate/components/translate-strategy-selector.vue";
+import MyH3 from "../atoms/my-h3.vue";
+import TranslateSettings from "./prompt/components/translate-settings.vue";
+import ImproveSettings from "./prompt/components/improve-settings.vue";
+import UserProfile from "./user/components/user-profile/user-profile.vue";
 
 </script>
 

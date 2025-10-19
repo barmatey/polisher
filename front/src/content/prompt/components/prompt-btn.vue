@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GlassButton from "../atoms/glass-button.vue";
+import GlassButton from "../../../atoms/glass-button.vue";
 
 interface P {
   label: string

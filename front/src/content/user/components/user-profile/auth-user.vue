@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MySettings from "../../atoms/my-settings.vue";
+import MySettings from "../../../../atoms/my-settings.vue";
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {WINDOW_PADDING, WINDOW_WIDTH} from "../config.ts";
+import {WINDOW_PADDING, WINDOW_WIDTH} from "../content/config.ts";
 import {ref} from "vue";
 import {Dialog} from "primevue";
-import IconCog from "../../assets/icons/icon-cog.vue";
-import IconUser from "../../assets/icons/icon-user.vue";
+import IconCog from "../assets/icons/icon-cog.vue";
+import IconUser from "../assets/icons/icon-user.vue";
 
 interface P {
   icon: "cog" | "user"
