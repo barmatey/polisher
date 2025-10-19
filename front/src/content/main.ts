@@ -1,6 +1,5 @@
 import {createApp} from 'vue'
 import Content from './content.vue'
-import "../assets/colors.css"
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 import {WINDOW_WIDTH} from "./config.ts";
