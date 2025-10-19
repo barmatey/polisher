@@ -14,7 +14,10 @@ const p = withDefaults(defineProps<P>(), {
 
 <template>
   <button
-      class="glass-btn"
+      :class="{
+        'glass-btn': !p.outlined,
+        'outlined-glass-btn': p.outlined,
+      }"
   >
     {{ p.label }}
   </button>

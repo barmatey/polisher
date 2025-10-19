@@ -5,9 +5,33 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: white;
     background: rgba(255, 255, 255, 0.15);
+    height: 2rem;
+    padding: 0 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 
 .glass-btn:hover {
-    background: red;
+    background: rgba(200, 220, 255, 0.25);
+}
+
+.outlined-glass-btn {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    color: white;
+    background: rgba(255, 255, 255, 0); /* полностью прозрачная */
+    height: 2rem;
+    padding: 0 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover для outlined-кнопки */
+.outlined-glass-btn:hover {
+    background: rgba(255, 255, 255, 0.1); /* легкий стеклянный эффект */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }

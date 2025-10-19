@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import MyButton from "../../atoms/my-button.vue";
+import GlassButton from "../../atoms/glass-button.vue";
 </script>
 
 <template>
-  <my-button
+  <glass-button
       label="Manage"
-      glass
       outlined
   />
 </template>
