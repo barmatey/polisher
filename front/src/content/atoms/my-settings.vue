@@ -21,6 +21,16 @@ function getIcon() {
     "user": IconUser,
   }[p.icon]
 }
+
+const pt = {
+  root: {
+    style: {
+      background: 'var(--second-background)',
+      color: 'white',
+      border: "none",
+    }
+  },
+}
 </script>
 
 <template>
@@ -38,6 +48,7 @@ function getIcon() {
         :style="{
           'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
         }"
+        :pt="pt"
     >
       <div>Hello</div>
     </Dialog>

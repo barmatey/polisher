@@ -15,7 +15,7 @@ import UserProfile from "./components/user-profile/user-profile.vue";
 <template>
   <div
       :style="{
-        'background': 'oklch(29.3% 0.066 243.157)',
+        'background': 'var(--core-background)',
         'color': 'white',
         'padding': `${WINDOW_PADDING}rem`,
         'height': '100%',
