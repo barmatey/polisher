@@ -3,6 +3,7 @@ import {RadioButton} from "primevue";
 import {onMounted, ref} from "vue";
 import type {TranslateStrategy} from "../translate/domain.ts";
 import {getTranslateStrategyService} from "../translate/services.ts";
+import MyLabel from "../atoms/my-label.vue";
 
 const strategies = ref<TranslateStrategy[]>([])
 const selectedStrategy = ref<TranslateStrategy | null>(null)
@@ -26,7 +27,7 @@ onMounted(async () => {
           :value="strategy.title"
           size="small"
       />
-      <label :for="strategy.code">{{ strategy.title }}</label>
+      <my-label :for="strategy.code">{{ strategy.title }}</my-label>
     </div>
   </div>
 </template>

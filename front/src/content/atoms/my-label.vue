@@ -3,17 +3,18 @@
 </script>
 
 <template>
-  <h3
+  <label
       :style="{
-        margin: '0',
-        fontSize: '1.15rem',
+        fontSize: '1rem',
         fontWeight: 'lighter',
+        userSelect: 'none',
+        cursor: 'pointer',
       }"
   >
     <slot>
 
     </slot>
-  </h3>
+  </label>
 </template>
 
 <style scoped>
