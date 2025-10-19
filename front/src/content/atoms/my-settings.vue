@@ -28,7 +28,7 @@ function getIcon() {
     <component
         :is="getIcon()"
         @click="() => showWindow = !showWindow"
-        stroke-width="0.75"
+        stroke-width="1"
         class="cursor-pointer"
     />
     <Dialog
