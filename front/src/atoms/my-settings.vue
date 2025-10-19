@@ -50,7 +50,9 @@ const pt = {
         }"
         :pt="pt"
     >
-      <div>Hello</div>
+      <slot>
+        <div>Hello</div>
+      </slot>
     </Dialog>
   </div>
 </template>
