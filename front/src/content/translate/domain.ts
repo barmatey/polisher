@@ -1,9 +1,4 @@
-export interface Language {
-    title: string
+export interface TranslateStrategy {
     code: string
-}
-
-export interface TranslateStrategy{
     title: string
-    code: string
 }

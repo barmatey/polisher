@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {RadioButton} from "primevue";
 import {onMounted, ref} from "vue";
-import type {TranslateStrategy} from "../translate/domain.ts";
-import {getTranslateStrategyService} from "../translate/services.ts";
 import MyLabel from "../atoms/my-label.vue";
 
 const strategies = ref<TranslateStrategy[]>([])

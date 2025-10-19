@@ -1,32 +1,10 @@
-import type {Language, TranslateStrategy} from "./domain.ts";
-
-interface LanguageService {
-    getAll: () => Promise<Language[]>
-}
-
-export function getLanguageService(): LanguageService {
-    async function getAll(): Promise<Language[]> {
-        return [
-            {
-                code: "en",
-                title: "English",
-            },
-            {
-                code: "ru",
-                title: "Russian",
-            },
-        ]
-    }
-
-    return {
-        getAll,
-    }
-}
+import type {TranslateStrategy} from "./domain.ts";
 
 
 interface TranslateStrategyService {
     getAll: () => Promise<TranslateStrategy[]>
 }
+
 export function getTranslateStrategyService(): TranslateStrategyService {
     async function getAll(): Promise<TranslateStrategy[]> {
         return [

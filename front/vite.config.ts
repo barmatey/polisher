@@ -16,7 +16,7 @@ export default defineConfig({
                     dest: '',
                 },
                 {
-                    src: 'src/assets/css/**/*',
+                    src: 'src/assets/css/**/*', // popup html
                     dest: 'content/css',
                 },
                 {
