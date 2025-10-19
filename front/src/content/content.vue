@@ -3,10 +3,10 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "./atoms/my-h1.vue";
 import MyH2 from "./atoms/my-h2.vue";
 import PromptBtn from "./components/prompt-btn.vue";
-import ManageLang from "./components/manage-lang/manage-lang.vue";
 import {WINDOW_PADDING} from "./config.ts";
 import TranslateStrategySelector from "./components/translate-strategy-selector.vue";
 import MyH3 from "./atoms/my-h3.vue";
+import TranslateSettings from "./components/translate-settings.vue";
 
 </script>
 
@@ -26,12 +26,14 @@ import MyH3 from "./atoms/my-h3.vue";
       <my-h1>{{ LOGO }}</my-h1>
 
       <div>
-        <my-h2>Translate</my-h2>
+        <div class="flex justify-between">
+          <my-h2>Translate</my-h2>
+          <translate-settings/>
+        </div>
         <div class="flex flex-wrap gap-2 mt-3">
           <prompt-btn label="English"/>
           <prompt-btn label="Russian"/>
           <prompt-btn label="Chinese"/>
-          <manage-lang/>
         </div>
 
         <div class="mt-4">
