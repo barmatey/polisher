@@ -27,7 +27,7 @@ import {WINDOW_PADDING} from "./config.ts";
       <div>
         <div>
           <my-h2>Translate</my-h2>
-          <div class="flex flex-wrap gap-2 mt-2">
+          <div class="flex flex-wrap gap-2 mt-3">
             <prompt-btn label="English"/>
             <prompt-btn label="Russian"/>
             <prompt-btn label="Chinese"/>
