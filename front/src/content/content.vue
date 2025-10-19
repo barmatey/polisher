@@ -8,7 +8,7 @@ import TranslateStrategySelector from "./components/translate-strategy-selector.
 import MyH3 from "./atoms/my-h3.vue";
 import TranslateSettings from "./components/translate-settings.vue";
 import ImproveSettings from "./components/improve-settings.vue";
-import UserProfile from "./components/user-profile.vue";
+import UserProfile from "./components/user-profile/user-profile.vue";
 
 </script>
 
