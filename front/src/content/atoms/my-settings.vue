@@ -3,15 +3,32 @@ import {WINDOW_PADDING, WINDOW_WIDTH} from "../config.ts";
 import {ref} from "vue";
 import {Dialog} from "primevue";
 import IconCog from "../../assets/icons/icon-cog.vue";
+import IconUser from "../../assets/icons/icon-user.vue";
+
+interface P {
+  icon: "cog" | "user"
+}
+
+const p = withDefaults(defineProps<P>(), {
+  icon: "cog",
+})
 
 const showWindow = ref(false)
+
+function getIcon() {
+  return {
+    "cog": IconCog,
+    "user": IconUser,
+  }[p.icon]
+}
 </script>
 
 <template>
   <div>
-    <icon-cog
+    <component
+        :is="getIcon()"
         @click="() => showWindow = !showWindow"
-        stroke-width="1.5"
+        stroke-width="0.75"
         class="cursor-pointer"
     />
     <Dialog

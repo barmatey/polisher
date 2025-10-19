@@ -8,6 +8,7 @@ import TranslateStrategySelector from "./components/translate-strategy-selector.
 import MyH3 from "./atoms/my-h3.vue";
 import TranslateSettings from "./components/translate-settings.vue";
 import ImproveSettings from "./components/improve-settings.vue";
+import UserProfile from "./components/user-profile.vue";
 
 </script>
 
@@ -24,10 +25,13 @@ import ImproveSettings from "./components/improve-settings.vue";
       }"
   >
     <div class="flex flex-col gap-6">
-      <my-h1>{{ LOGO }}</my-h1>
+      <div class="flex justify-between items-center">
+        <my-h1>{{ LOGO }}</my-h1>
+        <user-profile/>
+      </div>
 
       <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
           <my-h2>Translate</my-h2>
           <translate-settings/>
         </div>
@@ -46,7 +50,7 @@ import ImproveSettings from "./components/improve-settings.vue";
       <div/>
 
       <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
           <my-h2>Improve</my-h2>
           <improve-settings/>
         </div>
