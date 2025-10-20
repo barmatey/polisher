@@ -14,10 +14,15 @@ const isEditMode = defineModel("editMode", {default: false})
 function handleClickOnEdit() {
   isEditMode.value = true
 }
+
+function cancelEditing() {
+  isEditMode.value = false
+}
 </script>
 
 <template>
   <edit-mode
+      @click-on-cancel="cancelEditing"
       :prompt="p.prompt"
       v-if="isEditMode"
   />

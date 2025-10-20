@@ -9,6 +9,8 @@ const prompts = ref<Prompt[]>([])
 const editModes = ref<Record<string, boolean>>({})
 const isEditMode = computed(() => Object.values(editModes.value).filter(x => x).length > 0)
 
+const title = computed(() => isEditMode.value ? "Edit Prompt" : "Improve Settings")
+
 function handleDialogClosed() {
   for (let key of Object.keys(editModes.value)) {
     editModes.value[key] = false
@@ -22,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <my-settings
-      title="Improve buttons"
+      :title="title"
       @dialog-closed="handleDialogClosed"
   >
     <div class="flex flex-col gap-3">
