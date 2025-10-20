@@ -9,13 +9,17 @@ interface P {
   editing?: boolean
 }
 
-const p =withDefaults(defineProps<P>(), {
+const p = withDefaults(defineProps<P>(), {
   editing: false,
 })
 
 const isEditMode = ref(p.editing)
 
-const e = defineEmits(["editModeOpened", "editModeClosed"])
+const e = defineEmits<{
+  (e: "editModeOpened"): void
+  (e: "editModeClosed"): void
+  (e: "updated", item: Prompt): void
+}>()
 
 function handleEdit() {
   isEditMode.value = true
@@ -26,6 +30,7 @@ function handleCancel() {
   isEditMode.value = false
   e("editModeClosed")
 }
+
 </script>
 
 <template>

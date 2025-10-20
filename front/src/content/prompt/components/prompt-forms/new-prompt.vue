@@ -32,7 +32,7 @@ function handleClickOnCancel() {
     <my-textarea label="Text" v-model="formData.text" fluid auto-resize rows="1"/>
     <replacement-selector v-model="formData.replacement"/>
     <save-cancel
-        @click-on-cancel="handleClickOnCancel"
+        @cancel="handleClickOnCancel"
     />
   </div>
 </template>

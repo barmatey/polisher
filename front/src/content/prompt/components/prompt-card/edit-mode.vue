@@ -11,7 +11,10 @@ interface P {
 }
 
 const p = defineProps<P>()
-const e = defineEmits(["clickOnCancel"])
+const e = defineEmits<{
+  (e: "clickOnCancel"): void
+  (e: "updated", item: Prompt): void
+}>()
 
 const formData = ref<PromptForm>({
   title: p.prompt.title,
@@ -25,6 +28,11 @@ function handleClickOnCancel() {
   e("clickOnCancel")
 }
 
+function handleClickOnSave() {
+  const updated = Object.assign({}, p.prompt, formData.value)
+  e("updated", updated)
+}
+
 </script>
 
 <template>
@@ -33,7 +41,8 @@ function handleClickOnCancel() {
     <my-textarea label="Text" v-model="formData.text" fluid auto-resize rows="1"/>
     <replacement-selector v-model="formData.replacement"/>
     <save-cancel
-        @click-on-cancel="handleClickOnCancel"
+        @save="handleClickOnSave"
+        @cancel="handleClickOnCancel"
     />
   </div>
 </template>

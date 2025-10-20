@@ -30,14 +30,17 @@ const currentView = computed(() => ({
 
 function handleCreated(item: Prompt) {
   context.value.prompts.push(item)
+  context.value.mode = "read"
 }
 
 function handleDeleted(item: Prompt) {
   context.value.prompts = context.value.prompts.filter(x => x.id !== item.id)
+  context.value.mode = "read"
 }
 
 function handleUpdated(item: Prompt) {
   context.value.prompts = context.value.prompts.map(x => x.id === item.id ? item : x)
+  context.value.mode = "read"
 }
 
 function clear() {
