@@ -1,3 +1,5 @@
+import type {Replacement} from "../replacement/domain.ts";
+
 export interface Prompt {
     id: string
     title: string
@@ -7,10 +9,12 @@ export interface Prompt {
     userId: string
     order: number
     hotkey: string
+    replacement: Replacement
 }
 
 export interface PromptForm {
     title: string
     text: string
     hotkey: string
+    replacement: Replacement
 }

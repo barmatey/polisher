@@ -4,6 +4,7 @@ import {ref} from "vue";
 import MyInputText from "../../../../atoms/my-input-text.vue";
 import MyTextarea from "../../../../atoms/my-textarea.vue";
 import SaveCancel from "../../../../atoms/save-cancel.vue";
+import ReplacementSelector from "../../../replacement/components/replacement-selector.vue";
 
 interface P {
   prompt: Prompt
@@ -16,6 +17,7 @@ const formData = ref<PromptForm>({
   title: p.prompt.title,
   text: p.prompt.text,
   hotkey: p.prompt.hotkey,
+  replacement: {...p.prompt.replacement},
 })
 
 
@@ -29,6 +31,7 @@ function handleClickOnCancel() {
   <div class="flex flex-col gap-6">
     <my-input-text label="Title" v-model="formData.title" fluid/>
     <my-textarea label="Text" v-model="formData.text" fluid auto-resize rows="1"/>
+    <replacement-selector v-model="formData.replacement"/>
     <save-cancel
         @click-on-cancel="handleClickOnCancel"
     />
