@@ -17,6 +17,11 @@ export function getPromptService(): PromptService {
                 userId: '-1',
                 order: 1,
                 hotkey: 'Ctrl+M',
+                replacement: {
+                    id: "1",
+                    code: "inplace",
+                    title: "Inplace",
+                }
             },
             {
                 id: '2',
@@ -27,6 +32,11 @@ export function getPromptService(): PromptService {
                 userId: '-1',
                 order: 2,
                 hotkey: 'Ctrl+O',
+                replacement: {
+                    id: "1",
+                    code: "inplace",
+                    title: "Inplace",
+                }
             },
         ]
     }

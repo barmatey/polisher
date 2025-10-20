@@ -1,22 +1,30 @@
 <script setup lang="ts">
-import {RadioButton} from "primevue";
+import { RadioButton } from "primevue";
 import MyLabel from "../../../atoms/my-label.vue";
-import {onMounted, ref} from "vue";
-import type {Replacement} from "../domain.ts";
-import {getReplacementService} from "../services.ts";
+import { onMounted, ref, computed } from "vue";
+import type { Replacement } from "../domain.ts";
+import { getReplacementService } from "../services.ts";
 
-const options = ref<Replacement[]>([])
-const selected = defineModel<Replacement | null>({default: null})
+const options = ref<Replacement[]>([]);
+const selected = defineModel<Replacement | null>({ default: null });
+
+// <-- Вот это связывает объект и примитив
+const selectedCode = computed({
+  get: () => selected.value?.code ?? null,
+  set: (code: string | null) => {
+    selected.value = options.value.find(o => o.code === code) ?? null;
+  },
+});
 
 onMounted(async () => {
-  options.value = await getReplacementService().getAll()
-})
+  options.value = await getReplacementService().getAll();
+});
 </script>
 
 <template>
   <div class="flex flex-col gap-1">
     <my-label>Replacement Strategy</my-label>
-    <div/>
+    <div />
 
     <div
         v-for="o in options"
@@ -24,17 +32,14 @@ onMounted(async () => {
         class="flex gap-2 items-center"
     >
       <RadioButton
-          v-model="selected"
+          v-model="selectedCode"
           :inputId="o.code"
-          :value="o.title"
+          :value="o.code"
           size="small"
       />
       <my-label :for="o.code">{{ o.title }}</my-label>
     </div>
-
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
