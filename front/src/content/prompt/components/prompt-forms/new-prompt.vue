@@ -10,7 +10,7 @@ import {getReplacementService} from "../../../replacement/services.ts";
 
 const e = defineEmits<{
   (e: "created", item: Prompt): void
-  (e: "cancelled"): void
+  (e: "cancel"): void
 }>()
 
 const formData = ref<PromptForm>({
@@ -21,7 +21,7 @@ const formData = ref<PromptForm>({
 })
 
 function handleClickOnCancel() {
-  e("cancelled")
+  e("cancel")
 }
 
 </script>

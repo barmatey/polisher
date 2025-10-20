@@ -30,25 +30,35 @@ const currentView = computed(() => ({
 
 function handleCreated(item: Prompt) {
   context.value.prompts.push(item)
-  context.value.mode = "read"
+  clear()
 }
 
 function handleDeleted(item: Prompt) {
   context.value.prompts = context.value.prompts.filter(x => x.id !== item.id)
-  context.value.mode = "read"
+  clear()
 }
 
 function handleUpdated(item: Prompt) {
   context.value.prompts = context.value.prompts.map(x => x.id === item.id ? item : x)
-  context.value.mode = "read"
+  clear()
+}
+
+function handleCancel() {
+  clear()
+}
+
+function handleEdit(target: Prompt) {
+  context.value.updateTarget = target
+  context.value.mode = "update"
+}
+
+function handleBuild() {
+  context.value.mode = "create"
 }
 
 function clear() {
-  context.value = {
-    mode: "read",
-    prompts: [],
-    updateTarget: null
-  }
+  context.value.mode = "read"
+  context.value.updateTarget = null
 }
 
 onMounted(async () => {
@@ -60,10 +70,13 @@ onMounted(async () => {
   <my-settings :title="title" @dialog-closed="clear">
     <component
         :is="currentView"
-        v-model="context"
+        :context="context"
         @created="handleCreated"
         @updated="handleUpdated"
         @deleted="handleDeleted"
+        @cancel="handleCancel"
+        @edit="handleEdit"
+        @build="handleBuild"
     />
   </my-settings>
 </template>

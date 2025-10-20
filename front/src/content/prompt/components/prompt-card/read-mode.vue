@@ -8,10 +8,12 @@ interface P {
 
 const p = defineProps<P>()
 
-const e = defineEmits(["clickOnEdit"])
+const e = defineEmits<{
+  (e: "edit"): void
+}>()
 
 function handleClickOnEdit() {
-  e("clickOnEdit")
+  e("edit")
 }
 </script>
 
@@ -21,7 +23,7 @@ function handleClickOnEdit() {
     <div class="flex gap-3 items-center">
       <div>{{ p.prompt.hotkey }}</div>
       <simple-menu
-          @click-on-edit="handleClickOnEdit"
+          @edit="handleClickOnEdit"
       />
     </div>
   </div>

@@ -16,19 +16,19 @@ const p = withDefaults(defineProps<P>(), {
 const isEditMode = ref(p.editing)
 
 const e = defineEmits<{
-  (e: "editModeOpened"): void
-  (e: "editModeClosed"): void
+  (e: "edit"): void
+  (e: "cancel"): void
   (e: "updated", item: Prompt): void
 }>()
 
 function handleEdit() {
   isEditMode.value = true
-  e("editModeOpened")
+  e("edit")
 }
 
 function handleCancel() {
   isEditMode.value = false
-  e("editModeClosed")
+  e("cancel")
 }
 
 function handleUpdated(item: Prompt) {
@@ -40,13 +40,13 @@ function handleUpdated(item: Prompt) {
 
 <template>
   <edit-mode
-      @click-on-cancel="handleCancel"
+      @cancel="handleCancel"
       @updated="handleUpdated"
       :prompt="prompt"
       v-if="isEditMode"
   />
   <read-mode
-      @click-on-edit="handleEdit"
+      @edit="handleEdit"
       :prompt="prompt"
       v-else
   />

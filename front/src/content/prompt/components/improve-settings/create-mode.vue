@@ -2,16 +2,22 @@
 import type {ImproveContext} from "./types.ts";
 import NewPrompt from "../prompt-forms/new-prompt.vue";
 
-const context = defineModel<ImproveContext>({required: true})
+defineProps<{
+  context: ImproveContext
+}>()
 
-function handleCancelled() {
-  context.value.mode = "read"
+const e = defineEmits<{
+  (e: "cancel"): void
+}>()
+
+function handleCancel() {
+  e("cancel")
 }
 </script>
 
 <template>
   <div>
-   <new-prompt @cancelled="handleCancelled"/>
+    <new-prompt @cancel="handleCancel"/>
   </div>
 </template>
 

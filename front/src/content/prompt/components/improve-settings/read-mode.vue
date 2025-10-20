@@ -4,15 +4,21 @@ import GlassButton from "../../../../atoms/glass-button.vue";
 import type {ImproveContext} from "./types.ts";
 import type {Prompt} from "../../domain.ts";
 
-const context = defineModel<ImproveContext>({required: true})
+const p = defineProps<{
+  context: ImproveContext
+}>()
 
-function handleEditModeOpened(target: Prompt) {
-  context.value.updateTarget = target
-  context.value.mode = 'update'
+const e = defineEmits<{
+  (e: "edit", target: Prompt): void
+  (e: "build"): void
+}>()
+
+function handleEdit(target: Prompt) {
+  e("edit", target)
 }
 
-function handleClickOnCreatePromptButton() {
-  context.value.mode = 'create'
+function handleClickOnCreate() {
+  e("build")
 }
 
 </script>
@@ -21,10 +27,10 @@ function handleClickOnCreatePromptButton() {
 <template>
   <div class="flex flex-col gap-3">
     <prompt-card
-        v-for="item in context.prompts"
+        v-for="item in p.context.prompts"
         :key="item.id"
         :prompt="item"
-        @edit-mode-opened="handleEditModeOpened(item)"
+        @edit="handleEdit(item)"
     />
 
     <div/>
@@ -32,7 +38,7 @@ function handleClickOnCreatePromptButton() {
     <glass-button
         class="w-max"
         label="Create"
-        @click="handleClickOnCreatePromptButton"
+        @click="handleClickOnCreate"
     />
   </div>
 </template>

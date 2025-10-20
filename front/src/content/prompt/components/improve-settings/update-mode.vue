@@ -3,15 +3,17 @@ import PromptCard from "../prompt-card/prompt-card.vue";
 import type {ImproveContext} from "./types.ts";
 import type {Prompt} from "../../domain.ts";
 
-const context = defineModel<ImproveContext>({required: true})
+const p = defineProps<{
+  context: ImproveContext
+}>()
 
 const e = defineEmits<{
   (e: "updated", item: Prompt): void
+  (e: "cancel"): void
 }>()
 
-function handleEditModeClosed() {
-  context.value.updateTarget = null
-  context.value.mode = "read"
+function handleCancel() {
+  e("cancel")
 }
 
 function handleUpdated(item: Prompt) {
@@ -22,9 +24,9 @@ function handleUpdated(item: Prompt) {
 <template>
   <div>
     <prompt-card
-        :prompt="context.updateTarget!"
+        :prompt="p.context.updateTarget!"
         editing
-        @edit-mode-closed="handleEditModeClosed"
+        @cancel="handleCancel"
         @updated="handleUpdated"
     />
   </div>
