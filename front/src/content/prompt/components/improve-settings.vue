@@ -9,13 +9,22 @@ const prompts = ref<Prompt[]>([])
 const editModes = ref<Record<string, boolean>>({})
 const isEditMode = computed(() => Object.values(editModes.value).filter(x => x).length > 0)
 
+function handleDialogClosed() {
+  for (let key of Object.keys(editModes.value)) {
+    editModes.value[key] = false
+  }
+}
+
 onMounted(async () => {
   prompts.value = await getPromptService().getAllImprovePrompts()
 })
 </script>
 
 <template>
-  <my-settings title="Improve buttons">
+  <my-settings
+      title="Improve buttons"
+      @dialog-closed="handleDialogClosed"
+  >
     <div class="flex flex-col gap-3">
       <div v-for="item in prompts">
         <prompt-card

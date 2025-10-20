@@ -14,6 +14,12 @@ const p = withDefaults(defineProps<P>(), {
   icon: "cog",
 })
 
+const e = defineEmits(["dialogClosed"])
+
+function handleHide(){
+  e("dialogClosed")
+}
+
 const showWindow = ref(false)
 
 function getIcon() {
@@ -43,6 +49,7 @@ const pt = {
         class="cursor-pointer"
     />
     <Dialog
+        @hide="handleHide"
         :header="p.title"
         v-model:visible="showWindow"
         position="topright"
