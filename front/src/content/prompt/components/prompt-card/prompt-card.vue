@@ -10,7 +10,7 @@ interface P {
 
 const p = defineProps<P>()
 
-const isEditMode = ref(true)
+const isEditMode = ref(false)
 </script>
 
 <template>
