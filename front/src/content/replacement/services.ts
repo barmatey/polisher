@@ -2,6 +2,7 @@ import type {Replacement} from "./domain.ts";
 
 export interface ReplacementService {
     getAll: () => Promise<Replacement[]>
+    getBaseReplacement: () => Replacement
 }
 
 export function getReplacementService(): ReplacementService {
@@ -20,5 +21,13 @@ export function getReplacementService(): ReplacementService {
         ]
     }
 
-    return {getAll}
+    function getBaseReplacement() {
+        return {
+            id: "1",
+            code: "inplace",
+            title: "Inplace"
+        }
+    }
+
+    return {getAll, getBaseReplacement}
 }

@@ -26,6 +26,13 @@ function handleClickOnCreatePromptButton() {
         :prompt="item"
         @edit-mode-opened="handleEditModeOpened(item)"
     />
-    <glass-button label="Create" @click="handleClickOnCreatePromptButton"/>
+
+    <div/>
+
+    <glass-button
+        class="w-max"
+        label="Create"
+        @click="handleClickOnCreatePromptButton"
+    />
   </div>
 </template>

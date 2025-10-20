@@ -8,13 +8,13 @@ export interface Prompt {
     text: string
     userId: string
     order: number
-    hotkey: string
+    hotkey: string | null
     replacement: Replacement
 }
 
 export interface PromptForm {
     title: string
     text: string
-    hotkey: string
+    hotkey: string | null
     replacement: Replacement
 }

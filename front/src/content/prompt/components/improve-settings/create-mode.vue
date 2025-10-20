@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import type {ImproveContext} from "./types.ts";
-import SaveCancel from "../../../../atoms/save-cancel.vue";
+import NewPrompt from "../prompt-forms/new-prompt.vue";
 
 const context = defineModel<ImproveContext>({required: true})
 
-function handleClickOnCancel() {
+function handleCancelled() {
   context.value.mode = "read"
 }
 </script>
 
 <template>
   <div>
-    <save-cancel
-        @click-on-cancel="handleClickOnCancel"
-    />
+   <new-prompt @cancelled="handleCancelled"/>
   </div>
 </template>
 
