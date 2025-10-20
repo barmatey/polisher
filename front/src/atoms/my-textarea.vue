@@ -36,6 +36,7 @@ const modelValue = defineModel({default: ""})
             borderRadius: 0,
             paddingLeft: 0,
             paddingRight: 0,
+            fontWeight: 'lighter',
           }
         }
       }"
