@@ -10,10 +10,15 @@ const p = defineProps<P>()
 
 const e = defineEmits<{
   (e: "edit"): void
+  (e: "deleted"): void
 }>()
 
 function handleClickOnEdit() {
   e("edit")
+}
+
+function handleDelete() {
+  e("deleted")
 }
 </script>
 
@@ -24,6 +29,7 @@ function handleClickOnEdit() {
       <div>{{ p.prompt.hotkey }}</div>
       <simple-menu
           @edit="handleClickOnEdit"
+          @delete="handleDelete"
       />
     </div>
   </div>

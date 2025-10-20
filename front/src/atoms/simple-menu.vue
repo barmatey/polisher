@@ -15,6 +15,9 @@ const items = ref<MenuItem[]>([
   },
   {
     label: "Delete",
+    command: () => {
+
+    }
   }
 ])
 

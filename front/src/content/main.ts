@@ -4,6 +4,7 @@ import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 import {WINDOW_WIDTH} from "./config.ts";
 import {definePreset} from "@primeuix/themes";
+import {ConfirmationService} from "primevue";
 
 
 // 1. Размер панели
@@ -57,7 +58,8 @@ app
                 darkModeSelector: '.my-app-dark',
             }
         }
-    })
+    }).
+    use(ConfirmationService)
     .mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')

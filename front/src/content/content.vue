@@ -9,7 +9,7 @@ import MyH3 from "../atoms/my-h3.vue";
 import TranslateSettings from "./prompt/components/translate-settings.vue";
 import ImproveSettings from "./prompt/components/improve-settings/improve-settings.vue";
 import UserProfile from "./user/components/user-profile/user-profile.vue";
-
+import {ConfirmDialog} from "primevue";
 </script>
 
 <template>
@@ -61,6 +61,7 @@ import UserProfile from "./user/components/user-profile/user-profile.vue";
       </div>
 
     </div>
+    <ConfirmDialog/>
 
   </div>
 </template>
