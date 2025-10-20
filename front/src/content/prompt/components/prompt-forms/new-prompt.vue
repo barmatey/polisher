@@ -24,6 +24,21 @@ function handleClickOnCancel() {
   e("cancel")
 }
 
+async function handleSave() {
+  const created: Prompt = {
+    id: "string",
+    title: formData.value.title,
+    category: "improve",
+    role: "system",
+    text: formData.value.text,
+    userId: "",
+    order: 10,
+    hotkey: formData.value.hotkey,
+    replacement: {...formData.value.replacement},
+  }
+  e("created", created)
+}
+
 </script>
 
 <template>
@@ -33,6 +48,7 @@ function handleClickOnCancel() {
     <replacement-selector v-model="formData.replacement"/>
     <save-cancel
         @cancel="handleClickOnCancel"
+        @save="handleSave"
     />
   </div>
 </template>
