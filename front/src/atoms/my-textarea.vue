@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import {InputText} from "primevue";
+import {Textarea} from "primevue";
 import MyLabel from "./my-label.vue";
+
 
 interface P {
   label: string
   fluid?: boolean
+  autoResize?: boolean
+  rows?: string | number
 }
 
 const p = withDefaults(defineProps<P>(), {
@@ -17,8 +20,10 @@ const modelValue = defineModel({default: ""})
 <template>
   <div class="flex flex-col">
     <my-label>{{ p.label }}</my-label>
-    <InputText
+    <Textarea
         :fluid="p.fluid"
+        :auto-resize="p.autoResize"
+        :rows="p.rows"
         v-model="modelValue"
         :pt="{
         root: {
@@ -39,6 +44,6 @@ const modelValue = defineModel({default: ""})
   </div>
 </template>
 
-<style>
+<style scoped>
 
 </style>
