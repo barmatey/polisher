@@ -8,7 +8,6 @@
         fontSize: '1rem',
         fontWeight: 'lighter',
         userSelect: 'none',
-        cursor: 'pointer',
       }"
   >
     <slot>
@@ -17,6 +16,6 @@
   </label>
 </template>
 
-<style scoped>
+<style>
 
 </style>
