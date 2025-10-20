@@ -6,6 +6,7 @@ import ReadMode from "./read-mode.vue";
 import CreateMode from "./create-mode.vue";
 import UpdateMode from "./update-mode.vue";
 import type {ImproveContext} from "./types.ts";
+import type {Prompt} from "../../domain.ts";
 
 const context = ref<ImproveContext>({
   mode: "read",
@@ -27,8 +28,24 @@ const currentView = computed(() => ({
 }[context.value.mode]));
 
 
-function clear() {
+function handleCreated(item: Prompt) {
+  context.value.prompts.push(item)
+}
 
+function handleDeleted(item: Prompt) {
+  context.value.prompts = context.value.prompts.filter(x => x.id !== item.id)
+}
+
+function handleUpdated(item: Prompt) {
+  context.value.prompts = context.value.prompts.map(x => x.id === item.id ? item : x)
+}
+
+function clear() {
+  context.value = {
+    mode: "read",
+    prompts: [],
+    updateTarget: null
+  }
 }
 
 onMounted(async () => {
@@ -41,6 +58,9 @@ onMounted(async () => {
     <component
         :is="currentView"
         v-model="context"
+        @created="handleCreated"
+        @updated="handleUpdated"
+        @deleted="handleDeleted"
     />
   </my-settings>
 </template>
