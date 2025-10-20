@@ -2,6 +2,7 @@
 import MySettings from "../../../atoms/my-settings.vue";
 import type {Prompt} from "../domain.ts";
 import PromptCard from "./prompt-card/prompt-card.vue";
+import MyH2 from "../../../atoms/my-h2.vue";
 import {computed, onMounted, ref} from "vue";
 import {getPromptService} from "../services.ts";
 
@@ -28,6 +29,7 @@ onMounted(async () => {
       @dialog-closed="handleDialogClosed"
   >
     <div class="flex flex-col gap-3">
+      <my-h2 v-if="!isEditMode">Prompts</my-h2>
       <div v-for="item in prompts">
         <prompt-card
             v-if="!isEditMode || editModes[item.id]"
@@ -35,7 +37,10 @@ onMounted(async () => {
             :prompt="item"
         />
       </div>
+
     </div>
+
+
   </my-settings>
 </template>
 
