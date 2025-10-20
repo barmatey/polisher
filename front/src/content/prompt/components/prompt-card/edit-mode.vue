@@ -4,6 +4,7 @@ import {ref} from "vue";
 import MyH3 from "../../../../atoms/my-h3.vue";
 import MyInputText from "../../../../atoms/my-input-text.vue";
 import MyTextarea from "../../../../atoms/my-textarea.vue";
+import SaveCancel from "../../../../atoms/save-cancel.vue";
 
 interface P {
   prompt: Prompt
@@ -25,6 +26,7 @@ const formData = ref<PromptForm>({
     <my-h3>Edit Improve Button</my-h3>
     <my-input-text label="Title" v-model="formData.title" fluid/>
     <my-textarea label="Text" v-model="formData.text" fluid auto-resize rows="1"/>
+    <save-cancel/>
   </div>
 </template>
 
