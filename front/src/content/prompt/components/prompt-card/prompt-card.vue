@@ -31,11 +31,17 @@ function handleCancel() {
   e("editModeClosed")
 }
 
+function handleUpdated(item: Prompt) {
+  e("updated", item)
+  isEditMode.value = false
+}
+
 </script>
 
 <template>
   <edit-mode
       @click-on-cancel="handleCancel"
+      @updated="handleUpdated"
       :prompt="prompt"
       v-if="isEditMode"
   />
