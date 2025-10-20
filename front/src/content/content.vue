@@ -7,7 +7,7 @@ import {WINDOW_PADDING} from "./config.ts";
 import TranslateStrategySelector from "./translate/components/translate-strategy-selector.vue";
 import MyH3 from "../atoms/my-h3.vue";
 import TranslateSettings from "./prompt/components/translate-settings.vue";
-import ImproveSettings from "./prompt/components/improve-settings.vue";
+import ImproveSettings from "./prompt/components/improve-settings/improve-settings.vue";
 import UserProfile from "./user/components/user-profile/user-profile.vue";
 
 </script>
