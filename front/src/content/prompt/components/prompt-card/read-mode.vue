@@ -7,6 +7,12 @@ interface P {
 }
 
 const p = defineProps<P>()
+
+const e = defineEmits(["clickOnEdit"])
+
+function handleClickOnEdit() {
+  e("clickOnEdit")
+}
 </script>
 
 <template>
@@ -14,7 +20,9 @@ const p = defineProps<P>()
     <div>{{ p.prompt.title }}</div>
     <div class="flex gap-3 items-center">
       <div>{{ p.prompt.hotkey }}</div>
-      <simple-menu/>
+      <simple-menu
+          @click-on-edit="handleClickOnEdit"
+      />
     </div>
   </div>
 

@@ -3,11 +3,15 @@ import {ref} from "vue";
 import {Button} from "primevue";
 import {Menu} from "primevue";
 import IconVdots from "../assets/icons/icon-vdots.vue";
+import type {MenuItem} from "primevue/menuitem";
+
+const e = defineEmits(["clickOnEdit", "clickOnDelete"])
 
 const menu = ref();
-const items = ref([
+const items = ref<MenuItem[]>([
   {
     label: "Edit",
+    command: () => e("clickOnEdit")
   },
   {
     label: "Delete",

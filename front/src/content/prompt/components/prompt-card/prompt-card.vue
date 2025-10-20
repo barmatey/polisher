@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type {Prompt} from "../../domain.ts";
 import ReadMode from "./read-mode.vue";
-import {ref} from "vue";
 import EditMode from "./edit-mode.vue";
 
 interface P {
@@ -10,12 +9,23 @@ interface P {
 
 const p = defineProps<P>()
 
-const isEditMode = ref(false)
+const isEditMode = defineModel("editMode", {default: false})
+
+function handleClickOnEdit() {
+  isEditMode.value = true
+}
 </script>
 
 <template>
-  <edit-mode :prompt="p.prompt" v-if="isEditMode"/>
-  <read-mode :prompt="p.prompt" v-else/>
+  <edit-mode
+      :prompt="p.prompt"
+      v-if="isEditMode"
+  />
+  <read-mode
+      @click-on-edit="handleClickOnEdit"
+      :prompt="p.prompt"
+      v-else
+  />
 </template>
 
 <style scoped>
