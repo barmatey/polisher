@@ -41,7 +41,8 @@ const handleDelete = (event: any) => {
         transition: '0.2s',
       }"
     />
-    <div>
+
+    <div class="relative">
       <icon-trash
           stroke-width="0.75"
           class="cursor-pointer relative"

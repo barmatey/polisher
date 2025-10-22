@@ -6,6 +6,10 @@ import {WINDOW_WIDTH} from "./config.ts";
 import {definePreset} from "@primeuix/themes";
 import {ConfirmationService} from "primevue";
 
+import "../assets/css/colors.css"
+import "../assets/css/buttons.css"
+import "../assets/css/inputs.css"
+
 
 // 1. Размер панели
 const marginRight = '500px'
@@ -58,8 +62,7 @@ app
                 darkModeSelector: '.my-app-dark',
             }
         }
-    }).
-    use(ConfirmationService)
+    }).use(ConfirmationService)
     .mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')
