@@ -39,16 +39,20 @@ const handleDelete = (event: any) => {
         class="cursor-pointer"
         :style="{
         transition: '0.2s',
-        position: 'relative',
       }"
     />
-    <icon-trash
-        stroke-width="0.75"
-        class="cursor-pointer"
-        :style="{
-        transition: '0.2s',
-      }"
-        @click="(ev: any) => handleDelete(ev)"
-    />
+    <div>
+      <icon-trash
+          stroke-width="0.75"
+          class="cursor-pointer relative"
+          :style="{
+            transition: '0.2s',
+          }"
+          @click="(ev: any) => handleDelete(ev)"
+      />
+      <div class="p-3 absolute right-0" style="background: var(--core-background);)">
+        Are you sure?
+      </div>
+    </div>
   </div>
 </template>
