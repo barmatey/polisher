@@ -10,6 +10,7 @@ const p = defineProps<{
 const e = defineEmits<{
   (e: "updated", item: Prompt): void
   (e: "cancel"): void
+  (e: "deleted"): void
 }>()
 
 function handleCancel() {
@@ -18,6 +19,9 @@ function handleCancel() {
 
 function handleUpdated(item: Prompt) {
   e("updated", item)
+}
+function handleDeleted(){
+  e("deleted")
 }
 </script>
 
@@ -28,6 +32,7 @@ function handleUpdated(item: Prompt) {
         editing
         @cancel="handleCancel"
         @updated="handleUpdated"
+        @deleted="handleDeleted"
     />
   </div>
 </template>
