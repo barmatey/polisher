@@ -1,32 +1,19 @@
 <script setup lang="ts">
 import IconPencil from "../assets/icons/icon-pencil.vue";
 import IconTrash from "../assets/icons/icon-trash.vue";
-import { useConfirm } from "primevue/useconfirm";
+import GlassButton from "./glass-button.vue";
+import {ref} from "vue";
 
-const emit = defineEmits(["edit", "delete"]);
+const e = defineEmits(["edit", "delete"]);
 
-const confirm = useConfirm();
+const deleteClicked =ref(false)
 
-const handleDelete = (event: any) => {
-  console.log('Hande Delete', event.currentTarget);
-  confirm.require({
-    target: event.currentTarget,
-    message: 'Are you sure you want to delete?',
-    acceptClass: 'p-button-danger',
-    rejectProps: {
-      label: 'Cancel',
-      severity: 'secondary',
-      outlined: true
-    },
-    acceptProps: {
-      label: 'Delete',
-      severity: 'danger'
-    },
-    accept: () => {
-      emit("delete");
-    },
 
-  });
+const handleDelete = () => {
+  if (!deleteClicked.value) {
+    deleteClicked.value = true
+    return
+  }
 }
 
 
@@ -49,20 +36,28 @@ const handleDelete = (event: any) => {
           :style="{
             transition: '0.2s',
           }"
-          @click="(ev: any) => handleDelete(ev)"
+          @click="handleDelete"
       />
       <div
+          v-if="deleteClicked"
           :style="{
             position: 'absolute',
             right: 0,
             top: '1.7rem',
-            background: 'red',
-            padding:'0.5rem',
+            background: 'var(--core-background)',
+            padding:'0.5rem 0.75rem',
+            borderRadius: '6px',
             width: 'max-content',
             zIndex: 10,
           }"
       >
-        Are you sure?
+        <div>
+          Are you sure?
+        </div>
+        <div class="flex gap-2 mt-2">
+          <glass-button label="Cancel" outlined @click="() => deleteClicked = false"/>
+          <glass-button label="Delete"/>
+        </div>
       </div>
     </div>
   </div>
