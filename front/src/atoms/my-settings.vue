@@ -55,7 +55,7 @@ const pt = {
         position="topright"
         modal
         :style="{
-          'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`
+          'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`,
         }"
         :pt="pt"
     >
