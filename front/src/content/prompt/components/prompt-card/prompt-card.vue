@@ -19,6 +19,7 @@ const e = defineEmits<{
   (e: "edit"): void
   (e: "cancel"): void
   (e: "updated", item: Prompt): void
+  (e: "deleted",): void
 }>()
 
 function handleEdit() {
@@ -35,6 +36,9 @@ function handleUpdated(item: Prompt) {
   e("updated", item)
   isEditMode.value = false
 }
+function handleDeleted(){
+  e("deleted")
+}
 
 </script>
 
@@ -47,6 +51,7 @@ function handleUpdated(item: Prompt) {
   />
   <read-mode
       @edit="handleEdit"
+      @deleted="handleDeleted"
       :prompt="prompt"
       v-else
   />

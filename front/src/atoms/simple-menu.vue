@@ -16,6 +16,7 @@ const handleDelete = () => {
   }
 };
 
+
 const handleClickOutside = (event: MouseEvent) => {
   if (
       popupRef.value &&
@@ -45,6 +46,7 @@ onUnmounted(() => {
 <template>
   <div class="flex items-center gap-1">
     <icon-pencil
+        @click="$event('edit')"
         stroke-width="0.75"
         class="cursor-pointer"
         :style="{
@@ -80,7 +82,7 @@ onUnmounted(() => {
         </div>
         <div class="flex gap-2 mt-2">
           <glass-button label="Cancel" outlined @click="() => deleteClicked = false"/>
-          <glass-button label="Delete"/>
+          <glass-button label="Delete" @click="() => $emit('delete')"/>
         </div>
       </div>
     </div>
