@@ -51,7 +51,17 @@ const handleDelete = (event: any) => {
           }"
           @click="(ev: any) => handleDelete(ev)"
       />
-      <div class="p-3 absolute right-0" style="background: var(--core-background);)">
+      <div
+          :style="{
+            position: 'absolute',
+            right: 0,
+            top: '1.7rem',
+            background: 'red',
+            padding:'0.5rem',
+            width: 'max-content',
+            zIndex: 10,
+          }"
+      >
         Are you sure?
       </div>
     </div>
