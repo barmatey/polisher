@@ -1,49 +1,54 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import {Button} from "primevue";
-import {Menu} from "primevue";
-import IconVdots from "../assets/icons/icon-vdots.vue";
-import type {MenuItem} from "primevue/menuitem";
+import IconPencil from "../assets/icons/icon-pencil.vue";
+import IconTrash from "../assets/icons/icon-trash.vue";
+import { useConfirm } from "primevue/useconfirm";
 
-const e = defineEmits(["edit", "delete"])
+const emit = defineEmits(["edit", "delete"]);
 
-const menu = ref();
-const items = ref<MenuItem[]>([
-  {
-    label: "Edit",
-    command: () => e("edit")
-  },
-  {
-    label: "Delete",
-    command: () => {
+const confirm = useConfirm();
 
-    }
-  }
-])
+const handleDelete = (event: any) => {
+  console.log('Hande Delete', event.currentTarget);
+  confirm.require({
+    target: event.currentTarget,
+    message: 'Are you sure you want to delete?',
+    acceptClass: 'p-button-danger',
+    rejectProps: {
+      label: 'Cancel',
+      severity: 'secondary',
+      outlined: true
+    },
+    acceptProps: {
+      label: 'Delete',
+      severity: 'danger'
+    },
+    accept: () => {
+      emit("delete");
+    },
 
-const toggle = (event: any) => {
-  menu.value.toggle(event);
-};
+  });
+}
+
+
 </script>
 
-
 <template>
-  <div class="card flex justify-center">
-    <Button
-        type="button"
-        @click="toggle"
-        aria-haspopup="true"
-        aria-controls="overlay_menu"
+  <div class="flex items-center gap-1">
+    <icon-pencil
+        stroke-width="0.75"
+        class="cursor-pointer"
         :style="{
-          margin: 0,
-          padding: 0,
-          background: 'none',
-          border: 'none',
-        }"
-    >
-      <icon-vdots :style="{color: 'var(--text-secondary)'}"/>
-    </Button>
-    <Menu ref="menu" id="overlay_menu" :model="items" :popup="true"/>
+        transition: '0.2s',
+        position: 'relative',
+      }"
+    />
+    <icon-trash
+        stroke-width="0.75"
+        class="cursor-pointer"
+        :style="{
+        transition: '0.2s',
+      }"
+        @click="(ev: any) => handleDelete(ev)"
+    />
   </div>
 </template>
-

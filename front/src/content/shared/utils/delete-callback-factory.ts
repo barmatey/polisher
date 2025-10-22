@@ -28,3 +28,26 @@ export function createDeleteCallback(cb: Callback) {
         })
     }
 }
+
+
+export function createPopupConfirm(cb: Callback) {
+    const confirm = useConfirm()
+
+    return (event: any) => {
+        confirm.require({
+            target: event.currentTarget,
+            message: 'Are you sure?',
+            rejectProps: {
+                label: 'No',
+                severity: 'secondary',
+                outlined: true
+            },
+            acceptProps: {
+                label: 'Yes'
+            },
+            accept: cb,
+        });
+    }
+
+
+};
