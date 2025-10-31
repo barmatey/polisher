@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {RadioButton} from "primevue";
 import MyLabel from "../../../atoms/my-label.vue";
-import MyH3 from "../../../atoms/my-h2.vue";
 import {onMounted, ref, computed} from "vue";
 import type {TranslateStrategy} from "../domain.ts";
 import {getTranslateStrategyService} from "../services.ts";
@@ -25,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col gap-1">
-    <my-h3>Strategy</my-h3>
+    <my-label>Strategy</my-label>
     <div/>
 
     <div
