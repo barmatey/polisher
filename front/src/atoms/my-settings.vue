@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import {WINDOW_PADDING, WINDOW_WIDTH} from "../content/config.ts";
 import {ref} from "vue";
-import {Dialog} from "primevue";
 import IconCog from "../assets/icons/icon-cog.vue";
 import IconUser from "../assets/icons/icon-user.vue";
 import IconWallet from "../assets/icons/icon-wallet.vue";
 import IconClose from "../assets/icons/icon-close.vue";
+import MyH2 from "./my-h2.vue";
 
 interface P {
   title: string
@@ -19,6 +18,7 @@ const p = withDefaults(defineProps<P>(), {
 const e = defineEmits(["dialogClosed"])
 
 function handleHide() {
+  showWindow.value = false
   e("dialogClosed")
 }
 
@@ -32,15 +32,7 @@ function getIcon() {
   }[p.icon]
 }
 
-const pt = {
-  root: {
-    style: {
-      background: 'var(--second-background)',
-      color: 'white',
-      border: "none",
-    }
-  },
-}
+
 </script>
 
 <template>
@@ -51,29 +43,32 @@ const pt = {
         stroke-width="1"
         class="cursor-pointer"
     />
-    <Dialog
-        @hide="handleHide"
-        :header="p.title"
-        v-model:visible="showWindow"
-        position="topright"
-        modal
-        :style="{
-          'width': `${WINDOW_WIDTH - WINDOW_PADDING}rem`,
+    <transition>
+      <div
+          v-if="showWindow"
+          :style="{
+          position: 'absolute',
+          top: '1rem',
+          right: 0,
+          background: 'var(--second-background)',
+          width: 'calc(100% - 2rem)',
+          padding:'2rem',
+          zIndex: 10,
+          borderRadius: '12px'
         }"
-        :pt="pt"
-    >
-      <template #closebutton>
-        <div class="flex justify-center items-center">
+      >
+        <div class="flex justify-between items-center mb-6">
+          <my-h2>{{ p.title }}</my-h2>
           <icon-close
               class="cursor-pointer"
-              @click="() => showWindow = false"
+              @click="handleHide"
           />
         </div>
-      </template>
-      <slot>
-        <div>My Settings Slot</div>
-      </slot>
-    </Dialog>
+        <slot>
+          <div>My Settings Slot</div>
+        </slot>
+      </div>
+    </transition>
   </div>
 </template>
 
