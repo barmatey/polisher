@@ -1,0 +1,1 @@
+export type Mode = "read" | "update" | "create"

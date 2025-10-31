@@ -3,9 +3,18 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import PromptBtn from "./prompt/components/prompt-btn.vue";
 import {WINDOW_PADDING} from "./config.ts";
-import PromptSettings from "./prompt/components/prompt-settings/prompt-settings.vue";
+import PromptManager from "./prompt/components/prompt-manager/prompt-manager.vue";
 import UserProfile from "./user/components/user-profile/user-profile.vue";
 import {ConfirmPopup} from "primevue";
+import {onMounted, ref} from "vue";
+import type {Prompt} from "./prompt/domain.ts";
+import {getPromptService} from "./prompt/services.ts";
+
+const prompts = ref<Prompt[]>()
+
+onMounted(async () => {
+  prompts.value = await getPromptService().getAllUserPrompts()
+})
 </script>
 
 <template>
@@ -23,7 +32,7 @@ import {ConfirmPopup} from "primevue";
       <div class="flex justify-between items-center">
         <my-h1>{{ LOGO }}</my-h1>
         <div class="flex gap-2">
-          <prompt-settings/>
+          <prompt-manager v-model:prompts="prompts"/>
           <user-profile/>
         </div>
       </div>
@@ -31,8 +40,10 @@ import {ConfirmPopup} from "primevue";
 
       <div>
         <div class="flex flex-wrap gap-2 mt-3">
-          <prompt-btn label="Laconic"/>
-          <prompt-btn label="Churchill"/>
+          <prompt-btn
+              :label="item.title"
+              v-for="item in prompts"
+          />
         </div>
 
       </div>

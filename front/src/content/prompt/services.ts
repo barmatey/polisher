@@ -1,12 +1,11 @@
 import type {Prompt} from "./domain.ts";
 
 export interface PromptService {
-    getAllImprovePrompts: () => Promise<Prompt[]>
-    getAllTranslatePrompts: () => Promise<Prompt[]>
+    getAllUserPrompts: () => Promise<Prompt[]>
 }
 
 export function getPromptService(): PromptService {
-    async function getAllImprovePrompts(): Promise<Prompt[]> {
+    async function getAllUserPrompts(): Promise<Prompt[]> {
         return [
             {
                 id: '1',
@@ -41,9 +40,5 @@ export function getPromptService(): PromptService {
         ]
     }
 
-    async function getAllTranslatePrompts(): Promise<Prompt[]> {
-        return []
-    }
-
-    return {getAllImprovePrompts, getAllTranslatePrompts}
+    return {getAllUserPrompts}
 }

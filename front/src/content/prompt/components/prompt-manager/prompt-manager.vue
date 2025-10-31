@@ -1,21 +1,25 @@
 <script setup lang="ts">
 import MySettings from "../../../../atoms/my-settings.vue";
-import {computed, onMounted, ref} from "vue";
-import {getPromptService} from "../../services.ts";
+import {computed, ref} from "vue";
 import ReadMode from "./read-mode.vue";
 import CreateMode from "./create-mode.vue";
 import UpdateMode from "./update-mode.vue";
 import type {ImproveContext} from "./types.ts";
 import type {Prompt} from "../../domain.ts";
+import type {Mode} from "../../../shared/types.ts";
 
-const context = ref<ImproveContext>({
-  mode: "read",
-  prompts: [],
-  updateTarget: null
-})
+const prompts = defineModel<Prompt[]>("prompts", {default: () => []})
+const mode = ref<Mode>("read")
+const updateTarget = ref<Prompt | null>(null)
+
+const context = computed<ImproveContext>(() => ({
+  mode: mode.value,
+  prompts: prompts.value,
+  updateTarget: updateTarget.value,
+}))
 
 const title = computed(() => ({
-      read: "Improve Settings",
+      read: "Settings",
       create: "Create Prompt",
       update: "Update Prompt",
     }[context.value.mode]) as string
@@ -29,17 +33,17 @@ const currentView = computed(() => ({
 
 
 function handleCreated(item: Prompt) {
-  context.value.prompts.push(item)
+  prompts.value.push(item)
   clear()
 }
 
 function handleDeleted(item: Prompt) {
-  context.value.prompts = context.value.prompts.filter(x => x.id !== item.id)
+  prompts.value = context.value.prompts.filter(x => x.id !== item.id)
   clear()
 }
 
 function handleUpdated(item: Prompt) {
-  context.value.prompts = context.value.prompts.map(x => x.id === item.id ? item : x)
+  prompts.value = context.value.prompts.map(x => x.id === item.id ? item : x)
   clear()
 }
 
@@ -48,22 +52,20 @@ function handleCancel() {
 }
 
 function handleEdit(target: Prompt) {
-  context.value.updateTarget = target
-  context.value.mode = "update"
+  updateTarget.value = target
+  mode.value = "update"
 }
 
 function handleBuild() {
-  context.value.mode = "create"
+  mode.value = "create"
 }
 
 function clear() {
-  context.value.mode = "read"
-  context.value.updateTarget = null
+  mode.value = "read"
+  updateTarget.value = null
 }
 
-onMounted(async () => {
-  context.value.prompts = await getPromptService().getAllImprovePrompts()
-})
+
 </script>
 
 <template>
