@@ -2,7 +2,7 @@
 import IconPencil from "../assets/icons/icon-pencil.vue";
 import IconTrash from "../assets/icons/icon-trash.vue";
 import GlassButton from "./glass-button.vue";
-import { ref, onMounted, onUnmounted } from "vue";
+import {ref, onMounted, onUnmounted} from "vue";
 
 const e = defineEmits(["edit", "delete"]);
 
@@ -15,6 +15,10 @@ const handleDelete = () => {
     return;
   }
 };
+
+const handleEdit = () => {
+  e("edit", e);
+}
 
 
 const handleClickOutside = (event: MouseEvent) => {
@@ -46,7 +50,7 @@ onUnmounted(() => {
 <template>
   <div class="flex items-center gap-1">
     <icon-pencil
-        @click="$event('edit')"
+        @click="handleEdit"
         stroke-width="0.75"
         class="cursor-pointer"
         :style="{
