@@ -41,7 +41,6 @@ import {ConfirmPopup} from "primevue";
         </div>
 
         <div class="mt-4">
-          <my-h3>Strategy:</my-h3>
           <translate-strategy-selector class="mt-2"/>
         </div>
       </div>
