@@ -1,3 +1,5 @@
+import {capitalizeFirstLetter} from "../shared/utils/capitalise-first-letter.ts";
+
 export interface PlanInfo {
     title: string
     code: string
@@ -34,4 +36,11 @@ export interface Sub {
 
 export interface Plan {
     planInfo: PlanInfo
+}
+
+
+export function getCycleTitle(billingInfo: BillingInfo): string {
+    return {
+        "month": "Monthly"
+    }[billingInfo.cycle]
 }

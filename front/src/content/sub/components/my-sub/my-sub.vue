@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MySettings from "../../../../atoms/my-settings.vue";
 import {onMounted, ref} from "vue";
-import type {Sub} from "../../domain.ts";
+import {getCycleTitle, type Sub} from "../../domain.ts";
 import {getSubService} from "../../services.ts";
 import MyLabel from "../../../../atoms/my-label.vue";
 import GlassButton from "../../../../atoms/glass-button.vue";
@@ -30,7 +30,7 @@ onMounted(async () => {
 
         <div class="flex flex-col gap-1">
           <my-label>Cycle</my-label>
-          <div>{{ sub.billingInfo.cycle }}</div>
+          <div>{{ getCycleTitle(sub.billingInfo) }}</div>
         </div>
 
 
