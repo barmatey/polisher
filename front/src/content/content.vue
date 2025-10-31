@@ -9,6 +9,7 @@ import {ConfirmPopup} from "primevue";
 import {onMounted, ref} from "vue";
 import type {Prompt} from "./prompt/domain.ts";
 import {getPromptService} from "./prompt/services.ts";
+import {isAuthenticated} from "./user/store.ts";
 
 const prompts = ref<Prompt[]>()
 
@@ -33,7 +34,10 @@ onMounted(async () => {
         <my-h1>{{ LOGO }}</my-h1>
         <div class="flex gap-2">
           <user-profile/>
-          <prompt-manager v-model:prompts="prompts"/>
+          <prompt-manager
+              v-if="isAuthenticated()"
+              v-model:prompts="prompts"
+          />
         </div>
       </div>
 

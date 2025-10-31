@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
-import GlassButton from "../../../../atoms/glass-button.vue";
+import OauthButton from "../../../../atoms/oauth-button.vue";
 </script>
 
 <template>
-  <glass-button label="Sign In" outlined/>
+  <oauth-button/>
 </template>
 
 <style scoped>

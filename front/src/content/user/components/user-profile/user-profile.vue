@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import AuthUser from "./auth-user.vue";
 import UnauthUser from "./unauth-user.vue";
+import {isAuthenticated} from "../../store.ts";
 
-const isAuthenticated = true
 
 function getComponent() {
-  return isAuthenticated
+  return isAuthenticated()
       ? AuthUser
       : UnauthUser
 }

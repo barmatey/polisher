@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import MySettings from "../../../../atoms/my-settings.vue";
 </script>
 
 <template>
-  <my-settings icon="user">
-
-  </my-settings>
+<div>
+  authuser
+</div>
 </template>
 
 <style scoped>

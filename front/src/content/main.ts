@@ -9,6 +9,7 @@ import {ConfirmationService} from "primevue";
 import "../assets/css/colors.css"
 import "../assets/css/buttons.css"
 import "../assets/css/inputs.css"
+import {createPinia} from "pinia";
 
 
 // 1. Размер панели
@@ -34,6 +35,7 @@ document.body.style.marginRight = marginRight
 document.body.appendChild(sidebar)
 
 const app = createApp(Content)
+const pinia = createPinia()
 
 const MyPreset = definePreset(Aura, {
     semantic: {
@@ -62,7 +64,9 @@ app
                 darkModeSelector: '.my-app-dark',
             }
         }
-    }).use(ConfirmationService)
+    })
+    .use(ConfirmationService)
+    .use(pinia)
     .mount('#my-vue-extension-root')
 
 console.log('CONTENT JS')
