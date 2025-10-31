@@ -18,7 +18,10 @@ export function getSubService(): SubService {
                 newBillingDate: new Date(),
                 cycle: "month",
             },
-            balance: 10,
+            balance: {
+                currency: "USD",
+                value: 34,
+            },
         }
     }
 

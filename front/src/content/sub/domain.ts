@@ -19,11 +19,16 @@ export interface BillingInfo {
     cycle: string
 }
 
+export interface Balance {
+    value: number
+    currency: string
+}
+
 export interface Sub {
     id: string
     planInfo: PlanInfo
     billingInfo: BillingInfo
-    balance: number
+    balance: Balance
     externalId: string
 }
 

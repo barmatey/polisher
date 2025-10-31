@@ -14,6 +14,7 @@ const p = withDefaults(defineProps<P>(), {
 
 <template>
   <button
+      class="flex items-center justify-center"
       :class="{
         'glass-btn': !p.outlined,
         'outlined-glass-btn': p.outlined,

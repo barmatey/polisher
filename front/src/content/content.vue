@@ -10,7 +10,7 @@ import {onMounted, ref} from "vue";
 import type {Prompt} from "./prompt/domain.ts";
 import {getPromptService} from "./prompt/services.ts";
 import {isAuthenticated} from "./user/store.ts";
-import MySub from "./sub/components/my-sub.vue";
+import MySub from "./sub/components/my-sub/my-sub.vue";
 
 const prompts = ref<Prompt[]>()
 
