@@ -1,4 +1,4 @@
-import type {Replacement} from "../replacement/domain.ts";
+import type {Replacement} from "./components/prompt-card/replacement-selector/domain.ts";
 
 export interface Prompt {
     id: string

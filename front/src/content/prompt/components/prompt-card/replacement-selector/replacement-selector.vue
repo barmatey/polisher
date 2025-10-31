@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RadioButton } from "primevue";
-import MyLabel from "../../../atoms/my-label.vue";
+import MyLabel from "../../../../../atoms/my-label.vue";
 import { onMounted, ref, computed } from "vue";
-import type { Replacement } from "../domain.ts";
-import { getReplacementService } from "../services.ts";
+import type { Replacement } from "./domain.ts";
+import { getReplacementService } from "./services.ts";
 
 const options = ref<Replacement[]>([]);
 const selected = defineModel<Replacement | null>({ default: null });

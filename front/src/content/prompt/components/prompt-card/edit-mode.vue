@@ -4,7 +4,7 @@ import {ref} from "vue";
 import MyInputText from "../../../../atoms/my-input-text.vue";
 import MyTextarea from "../../../../atoms/my-textarea.vue";
 import SaveCancel from "../../../../atoms/save-cancel.vue";
-import ReplacementSelector from "../../../replacement/components/replacement-selector.vue";
+import ReplacementSelector from "./replacement-selector/replacement-selector.vue";
 
 interface P {
   prompt: Prompt

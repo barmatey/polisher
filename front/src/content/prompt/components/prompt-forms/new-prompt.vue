@@ -2,11 +2,11 @@
 
 import type {Prompt, PromptForm} from "../../domain.ts";
 import MyTextarea from "../../../../atoms/my-textarea.vue";
-import ReplacementSelector from "../../../replacement/components/replacement-selector.vue";
+import ReplacementSelector from "../prompt-card/replacement-selector/replacement-selector.vue";
 import SaveCancel from "../../../../atoms/save-cancel.vue";
 import MyInputText from "../../../../atoms/my-input-text.vue";
 import {ref} from "vue";
-import {getReplacementService} from "../../../replacement/services.ts";
+import {getReplacementService} from "../prompt-card/replacement-selector/services.ts";
 
 const e = defineEmits<{
   (e: "created", item: Prompt): void
