@@ -16,7 +16,7 @@ const p = withDefaults(defineProps<P>(), {
 
 const e = defineEmits(["dialogClosed"])
 
-function handleHide(){
+function handleHide() {
   e("dialogClosed")
 }
 
@@ -60,7 +60,7 @@ const pt = {
         :pt="pt"
     >
       <slot>
-        <div>Hello</div>
+        <div>My Settings Slot</div>
       </slot>
     </Dialog>
   </div>

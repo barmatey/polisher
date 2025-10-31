@@ -22,7 +22,10 @@ function clearUserInLocalStorage(): void {
 export const useUserStore = defineStore(
     "useUserStore",
     () => {
-        const user = ref<User | null>(null)
+        const user = ref<User | null>({
+            id:"10",
+            email: "test@tes.com"
+        })
 
         function loadMyselfFromCache() {
             user.value = getFromLocalStorage()
