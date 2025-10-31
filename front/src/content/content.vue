@@ -10,6 +10,7 @@ import {onMounted, ref} from "vue";
 import type {Prompt} from "./prompt/domain.ts";
 import {getPromptService} from "./prompt/services.ts";
 import {isAuthenticated} from "./user/store.ts";
+import MySub from "./sub/components/my-sub.vue";
 
 const prompts = ref<Prompt[]>()
 
@@ -33,6 +34,7 @@ onMounted(async () => {
       <div class="flex justify-between items-center">
         <my-h1>{{ LOGO }}</my-h1>
         <div class="flex gap-2">
+          <my-sub/>
           <user-profile/>
           <prompt-manager
               v-if="isAuthenticated()"

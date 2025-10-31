@@ -4,10 +4,11 @@ import {ref} from "vue";
 import {Dialog} from "primevue";
 import IconCog from "../assets/icons/icon-cog.vue";
 import IconUser from "../assets/icons/icon-user.vue";
+import IconWallet from "../assets/icons/icon-wallet.vue";
 
 interface P {
   title: string
-  icon?: "cog" | "user"
+  icon?: "cog" | "user" | "wallet"
 }
 
 const p = withDefaults(defineProps<P>(), {
@@ -26,6 +27,7 @@ function getIcon() {
   return {
     "cog": IconCog,
     "user": IconUser,
+    "wallet": IconWallet,
   }[p.icon]
 }
 
