@@ -5,6 +5,7 @@ import {Dialog} from "primevue";
 import IconCog from "../assets/icons/icon-cog.vue";
 import IconUser from "../assets/icons/icon-user.vue";
 import IconWallet from "../assets/icons/icon-wallet.vue";
+import IconClose from "../assets/icons/icon-close.vue";
 
 interface P {
   title: string
@@ -61,6 +62,14 @@ const pt = {
         }"
         :pt="pt"
     >
+      <template #closebutton>
+        <div class="flex justify-center items-center">
+          <icon-close
+              class="cursor-pointer"
+              @click="() => showWindow = false"
+          />
+        </div>
+      </template>
       <slot>
         <div>My Settings Slot</div>
       </slot>
