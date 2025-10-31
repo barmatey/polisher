@@ -32,8 +32,8 @@ onMounted(async () => {
       <div class="flex justify-between items-center">
         <my-h1>{{ LOGO }}</my-h1>
         <div class="flex gap-2">
-          <prompt-manager v-model:prompts="prompts"/>
           <user-profile/>
+          <prompt-manager v-model:prompts="prompts"/>
         </div>
       </div>
 
