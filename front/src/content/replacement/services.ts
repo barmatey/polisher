@@ -15,7 +15,7 @@ export function getReplacementService(): ReplacementService {
             },
             {
                 id: "2",
-                code: "after",
+                code: "append",
                 title: "Append",
             },
             {
