@@ -3,7 +3,7 @@ import {LOGO} from "../logo.ts";
 import MyH1 from "../atoms/my-h1.vue";
 import PromptBtn from "./prompt/components/prompt-btn.vue";
 import {WINDOW_PADDING} from "./config.ts";
-import ImproveSettings from "./prompt/components/improve-settings/improve-settings.vue";
+import PromptSettings from "./prompt/components/prompt-settings/prompt-settings.vue";
 import UserProfile from "./user/components/user-profile/user-profile.vue";
 import {ConfirmPopup} from "primevue";
 </script>
@@ -23,7 +23,7 @@ import {ConfirmPopup} from "primevue";
       <div class="flex justify-between items-center">
         <my-h1>{{ LOGO }}</my-h1>
         <div class="flex gap-2">
-          <improve-settings/>
+          <prompt-settings/>
           <user-profile/>
         </div>
       </div>
