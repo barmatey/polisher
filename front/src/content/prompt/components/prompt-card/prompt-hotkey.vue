@@ -90,7 +90,7 @@ function cancelAndClose() {
 </script>
 
 <template>
-  <div class="flex gap-2 ">
+  <div class="flex gap-2 items-center">
  {{ p.prompt.hotkey}}
     <div
         v-if="!handlerMode"
