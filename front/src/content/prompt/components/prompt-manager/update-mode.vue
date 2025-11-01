@@ -8,7 +8,7 @@ const p = defineProps<{
 }>()
 
 const e = defineEmits<{
-  (e: "updated", item: Prompt): void
+  (e: "updated", items: Prompt[]): void
   (e: "cancel"): void
   (e: "deleted"): void
 }>()
@@ -17,8 +17,8 @@ function handleCancel() {
   e("cancel")
 }
 
-function handleUpdated(item: Prompt) {
-  e("updated", item)
+function handleUpdated(items: Prompt[]) {
+  e("updated", items)
 }
 function handleDeleted(){
   e("deleted")

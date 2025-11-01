@@ -11,7 +11,7 @@ const p = defineProps<{
 const e = defineEmits<{
   (e: "edit", target: Prompt): void
   (e: "deleted", target: Prompt):void
-  (e: "updated", target: Prompt): void
+  (e: "updated", target: Prompt[]): void
   (e: "build"): void
 }>()
 
@@ -27,8 +27,8 @@ function handleDeleted(item: Prompt){
   e("deleted", item)
 }
 
-function handleUpdated(item: Prompt){
-  e("updated", item)
+function handleUpdated(items: Prompt[]){
+  e("updated", items)
 }
 
 </script>

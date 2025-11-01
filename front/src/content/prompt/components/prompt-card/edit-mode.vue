@@ -13,7 +13,7 @@ interface P {
 const p = defineProps<P>()
 const e = defineEmits<{
   (e: "cancel"): void
-  (e: "updated", item: Prompt): void
+  (e: "updated", items: Prompt[]): void
 }>()
 
 const formData = ref<PromptForm>({
@@ -30,7 +30,7 @@ function handleClickOnCancel() {
 
 function handleClickOnSave() {
   const updated = Object.assign({}, p.prompt, formData.value)
-  e("updated", updated)
+  e("updated", [updated])
 }
 
 </script>

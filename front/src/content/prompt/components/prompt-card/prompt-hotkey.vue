@@ -8,7 +8,7 @@ interface P {
 }
 
 const e = defineEmits<{
-  (e: "updated", item: Prompt): void
+  (e: "updated", item: Prompt[]): void
 }>()
 
 const p = defineProps<P>();
@@ -32,7 +32,7 @@ function onKeyDown(e: KeyboardEvent) {
 
   // Esc → отменить ввод без сохранения
   if (key === "Escape") {
-    cancelAndClose();
+    closeHandlerMode();
     return;
   }
 
@@ -76,22 +76,22 @@ function openHandlerMode() {
   nextTick(() => inputEl.value?.focus());
 }
 
-async function saveAndClose() {
-  const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
-  result.forEach(updated => e("updated", updated))
-  handlerMode.value = false;
+function closeHandlerMode() {
   pressedKeys.clear();
+  handlerMode.value = false;
 }
 
-function cancelAndClose() {
-  pressedKeys.clear();
-  handlerMode.value = false;
+async function saveAndClose() {
+  const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
+  console.log('updated => ', result.map(x => x.title + ": " + x.hotkey))
+  e("updated", result)
+  closeHandlerMode()
 }
 </script>
 
 <template>
   <div class="flex gap-2 items-center">
- {{ p.prompt.hotkey}}
+    {{ p.prompt.hotkey }}
     <div
         v-if="!handlerMode"
         @click="openHandlerMode"

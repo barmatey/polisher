@@ -18,7 +18,7 @@ const isEditMode = ref(p.editing)
 const e = defineEmits<{
   (e: "edit"): void
   (e: "cancel"): void
-  (e: "updated", item: Prompt): void
+  (e: "updated", item: Prompt[]): void
   (e: "deleted",): void
 }>()
 
@@ -32,8 +32,8 @@ function handleCancel() {
   e("cancel")
 }
 
-function handleUpdated(item: Prompt) {
-  e("updated", item)
+function handleUpdated(items: Prompt[]) {
+  e("updated", items)
   isEditMode.value = false
 }
 

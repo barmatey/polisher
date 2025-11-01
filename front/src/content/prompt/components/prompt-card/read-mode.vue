@@ -12,7 +12,7 @@ const p = defineProps<P>()
 const e = defineEmits<{
   (e: "edit"): void
   (e: "deleted"): void
-  (e: "updated", value: Prompt): void
+  (e: "updated", value: Prompt[]): void
 }>()
 
 function handleClickOnEdit() {
@@ -23,8 +23,8 @@ function handleDelete() {
   e("deleted")
 }
 
-function handleHotkeyUpdated(value: Prompt) {
-  e("updated", value)
+function handleHotkeyUpdated(items: Prompt[]) {
+  e("updated", items)
 }
 </script>
 
