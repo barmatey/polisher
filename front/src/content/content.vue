@@ -15,7 +15,7 @@ import MySub from "./sub/components/my-sub/my-sub.vue";
 const prompts = ref<Prompt[]>()
 
 onMounted(async () => {
-  prompts.value = await getPromptService().getAllUserPrompts()
+  prompts.value = await getPromptService().getAll()
 })
 </script>
 

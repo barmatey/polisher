@@ -3,7 +3,6 @@ import type {Replacement} from "./components/prompt-card/replacement-selector/do
 export interface Prompt {
     id: string
     title: string
-    category: "translate" | "improve"
     role: "system" | "user"
     text: string
     userId: string

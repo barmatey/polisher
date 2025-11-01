@@ -2,6 +2,7 @@
 import type {Prompt} from "../../domain.ts";
 import SimpleMenu from "../../../../atoms/simple-menu.vue";
 import PromptHotkey from "./prompt-hotkey.vue";
+import {getPromptService} from "../../services.ts";
 
 interface P {
   prompt: Prompt
@@ -19,7 +20,8 @@ function handleClickOnEdit() {
   e("edit")
 }
 
-function handleDelete() {
+async function handleDelete() {
+  await getPromptService().deleteOne(p.prompt.id)
   e("deleted")
 }
 

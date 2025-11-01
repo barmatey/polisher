@@ -7,6 +7,7 @@ import SaveCancel from "../../../../atoms/save-cancel.vue";
 import MyInputText from "../../../../atoms/my-input-text.vue";
 import {ref} from "vue";
 import {getReplacementService} from "../prompt-card/replacement-selector/services.ts";
+import {getPromptService} from "../../services.ts";
 
 const e = defineEmits<{
   (e: "created", item: Prompt): void
@@ -25,17 +26,7 @@ function handleClickOnCancel() {
 }
 
 async function handleSave() {
-  const created: Prompt = {
-    id: "string",
-    title: formData.value.title,
-    category: "improve",
-    role: "system",
-    text: formData.value.text,
-    userId: "",
-    order: 10,
-    hotkey: formData.value.hotkey,
-    replacement: {...formData.value.replacement},
-  }
+  const created = await getPromptService().createOne(formData.value)
   e("created", created)
 }
 

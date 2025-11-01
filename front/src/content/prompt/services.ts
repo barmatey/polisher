@@ -1,7 +1,9 @@
 import type {Prompt, PromptForm} from "./domain.ts";
 
 export interface PromptService {
-    getAllUserPrompts: () => Promise<Prompt[]>
+    getAll: () => Promise<Prompt[]>
+    createOne: (data: PromptForm) => Promise<Prompt>
+    deleteOne: (targetId: string) => Promise<void>
     updateHotkey: (targetId: string, hotkey: string | null) => Promise<Prompt[]>
     updateOne: (targetId: string, data: PromptForm) => Promise<Prompt>
 }
@@ -10,7 +12,6 @@ const prompts: Prompt[] = [
     {
         id: '1',
         title: "Laconic",
-        category: "improve",
         role: "system",
         text: 'Any prompt text',
         userId: '-1',
@@ -25,7 +26,6 @@ const prompts: Prompt[] = [
     {
         id: '2',
         title: "Churchill",
-        category: "improve",
         role: "system",
         text: 'Any prompt text',
         userId: '-1',
@@ -40,8 +40,23 @@ const prompts: Prompt[] = [
 ]
 
 export function getPromptService(): PromptService {
-    async function getAllUserPrompts(): Promise<Prompt[]> {
+    async function getAll(): Promise<Prompt[]> {
         return structuredClone(prompts)
+    }
+
+    async function createOne(data: PromptForm): Promise<Prompt> {
+        const created: Prompt = {
+            id: String(prompts.length),
+            title: data.title,
+            role: "system",
+            text: data.text,
+            userId: "",
+            order: 10,
+            hotkey: null,
+            replacement: {...data.replacement},
+        }
+        prompts.push(created)
+        return structuredClone(created)
     }
 
     async function updateHotkey(targetId: string, hotkey: string | null): Promise<Prompt[]> {
@@ -58,7 +73,7 @@ export function getPromptService(): PromptService {
         return result
     }
 
-    async function updateOne(targetId: string, data: PromptForm): Promise<Prompt[]> {
+    async function updateOne(targetId: string, data: PromptForm): Promise<Prompt> {
         for (let prompt of prompts) {
             if (prompt.id === targetId) {
                 prompt.hotkey = data.hotkey
@@ -68,7 +83,13 @@ export function getPromptService(): PromptService {
                 return structuredClone(prompt)
             }
         }
+        throw Error("LookupError")
     }
 
-    return {getAllUserPrompts, updateHotkey, updateOne}
+    async function deleteOne(targetId: string) {
+        const targetIndex = prompts.findIndex(prompt => prompt.id === targetId)
+        prompts.splice(targetIndex, 1)
+    }
+
+    return {getAll, updateHotkey, updateOne, createOne, deleteOne}
 }
