@@ -19,9 +19,12 @@ const handlerMode = ref(false);
 
 const inputEl = ref<HTMLElement | null>(null);
 
-function normalizeKey(key: string): string {
-  if (key.length === 1) return key.toUpperCase();
-  return key;
+function normalizeKey(code: string): string {
+  // Приведем стандартные коды в человекочитаемый вид
+  if (code.startsWith("Key")) return code.slice(3).toUpperCase();       // KeyA → A
+  if (code.startsWith("Digit")) return code.slice(5);                   // Digit1 → 1
+  if (code.startsWith("Arrow")) return code;                            // ArrowLeft → ArrowLeft
+  return code; // остальные оставляем как есть (например, Space, Enter)
 }
 
 function onKeyDown(e: KeyboardEvent) {
@@ -49,7 +52,7 @@ function onKeyDown(e: KeyboardEvent) {
 function onKeyUp(e: KeyboardEvent) {
   e.preventDefault();
 
-  const key = normalizeKey(e.key);
+  const key = normalizeKey(e.code);
 
   if (["Escape", "Backspace", "Delete"].includes(key)) return;
 
