@@ -11,6 +11,7 @@ import type {Prompt} from "./prompt/domain.ts";
 import {getPromptService} from "./prompt/services.ts";
 import {isAuthenticated} from "./user/store.ts";
 import MySub from "./sub/components/my-sub/my-sub.vue";
+import SelectedText from "./text/components/selcted-text/selected-text.vue";
 
 const prompts = ref<Prompt[]>()
 
@@ -56,6 +57,7 @@ onMounted(async () => {
 
     </div>
 
+    <selected-text/>
     <ConfirmPopup/>
   </div>
 </template>
