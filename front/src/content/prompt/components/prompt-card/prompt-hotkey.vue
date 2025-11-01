@@ -14,10 +14,9 @@ const e = defineEmits<{
 const p = defineProps<P>();
 
 const value = ref<string | null>(null);
-
-
 const pressedKeys = new Set<string>();
 const handlerMode = ref(false);
+
 const inputEl = ref<HTMLElement | null>(null);
 
 function normalizeKey(key: string): string {
@@ -78,12 +77,13 @@ function openHandlerMode() {
 
 function closeHandlerMode() {
   pressedKeys.clear();
+  value.value = null
   handlerMode.value = false;
 }
 
 async function saveAndClose() {
   const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
-  console.log('updated => ', result.map(x => x.title + ": " + x.hotkey))
+  console.log('from prompt hotkey => ', result.map(x => x.title + ": " + x.hotkey))
   e("updated", result)
   closeHandlerMode()
 }

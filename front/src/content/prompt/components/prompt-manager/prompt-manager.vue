@@ -43,10 +43,19 @@ function handleDeleted(item: Prompt) {
 }
 
 function handleUpdated(items: Prompt[]) {
+  console.log('in prompt manager', items.map(x => x.title + ": " + x.hotkey))
   const hashes: Record<string, Prompt> = {}
   items.forEach(x => hashes[x.id] = x)
-  prompts.value = prompts.value.map(x => hashes[x.id] ?? x)
-  console.log(prompts.value.map(x => x.title + ": " + x.hotkey))
+
+  for (let i = 0; i < prompts.value.length; i++) {
+    const current = prompts.value[i]!
+    const target = hashes[current.id]
+    if (target) {
+      console.log('Replacing', current.title, ":", current.hotkey, "with", target.title, ":", target.hotkey)
+      prompts.value[i] = target
+    }
+  }
+  console.log('final value', prompts.value.map(x => x.title + ": " + x.hotkey))
   clear()
 }
 
