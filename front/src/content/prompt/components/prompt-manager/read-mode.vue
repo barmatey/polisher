@@ -11,6 +11,7 @@ const p = defineProps<{
 const e = defineEmits<{
   (e: "edit", target: Prompt): void
   (e: "deleted", target: Prompt):void
+  (e: "updated", target: Prompt): void
   (e: "build"): void
 }>()
 
@@ -26,6 +27,10 @@ function handleDeleted(item: Prompt){
   e("deleted", item)
 }
 
+function handleUpdated(item: Prompt){
+  e("updated", item)
+}
+
 </script>
 
 
@@ -37,6 +42,7 @@ function handleDeleted(item: Prompt){
         :prompt="item"
         @edit="handleEdit(item)"
         @deleted="handleDeleted(item)"
+        @updated="handleUpdated"
     />
 
     <div/>
