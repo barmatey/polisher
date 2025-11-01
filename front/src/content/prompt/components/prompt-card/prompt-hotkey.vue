@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, nextTick} from "vue";
+import { ref, nextTick } from "vue";
 
 interface P {
   hotkey: string | null;
@@ -8,46 +8,56 @@ interface P {
 const p = defineProps<P>();
 
 const value = ref("");
+const pressedKeys = new Set<string>(); // отслеживаем нажатые клавиши
+const handlerMode = ref(false);
+const inputEl = ref<HTMLElement | null>(null);
 
-async function onKeyDown(e: KeyboardEvent) {
+function normalizeKey(key: string): string {
+  if (key.length === 1) return key.toUpperCase();
+  return key;
+}
+
+function onKeyDown(e: KeyboardEvent) {
+  e.preventDefault();
+
+  const key = normalizeKey(e.key);
+  pressedKeys.add(key);
+}
+
+function onKeyUp(e: KeyboardEvent) {
   e.preventDefault();
 
   const parts: string[] = [];
-  if (e.ctrlKey) parts.push("Ctrl");
-  if (e.altKey) parts.push("Alt");
-  if (e.shiftKey) parts.push("Shift");
-  if (e.metaKey) parts.push("Meta");
 
-  const key = e.key.length === 1 ? e.key.toUpperCase() : e.key;
+  if (pressedKeys.has("Control")) parts.push("Ctrl");
+  if (pressedKeys.has("Alt")) parts.push("Alt");
+  if (pressedKeys.has("Shift")) parts.push("Shift");
+  if (pressedKeys.has("Meta")) parts.push("Meta");
+
+  const key = normalizeKey(e.key);
   if (!["Control", "Shift", "Alt", "Meta"].includes(key)) {
     parts.push(key);
   }
 
   value.value = parts.join("+");
+  pressedKeys.clear();
 
-  // После выбора можно сразу выйти из режима
-
-  // await saveAndClose()
+  // после отпускания сохраняем
+  saveAndClose();
 }
-
-
-// Mange enter mode
-const inputEl = ref<HTMLElement | null>(null);
-const handlerMode = ref(false);
 
 function openHandlerMode() {
   handlerMode.value = true;
   nextTick(() => inputEl.value?.focus());
 }
 
-async function saveAndClose() {
+function saveAndClose() {
   handlerMode.value = false;
 }
 </script>
 
 <template>
   <div class="flex gap-2 border p-2 rounded cursor-text">
-    <!-- Отображение текущего hotkey -->
     <div
         v-if="!handlerMode"
         @click="openHandlerMode"
@@ -56,15 +66,14 @@ async function saveAndClose() {
       {{ value || p.hotkey || "Click to set hotkey" }}
     </div>
 
-    <!-- Режим ввода -->
     <div
         v-else
         ref="inputEl"
         tabindex="0"
         @keydown.prevent="onKeyDown"
-        class=""
+        @keyup.prevent="onKeyUp"
     >
-      {{ value || "Press Key" }}
+      {{ value || "Press keys..." }}
     </div>
   </div>
 </template>
