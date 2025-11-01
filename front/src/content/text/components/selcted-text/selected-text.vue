@@ -5,15 +5,9 @@ import {getInputComponent, useSelectedTextStore} from "../../store.ts";
 const store = useSelectedTextStore()
 
 function updateText() {
-  store.component = getInputComponent()
+  const component = getInputComponent()
+  if (component) store.component = component
   store.selectedText = window.getSelection()?.toString().trim() ?? ""
-
-  if (store.component) {
-    const input = store.component as HTMLInputElement | HTMLTextAreaElement
-    store.inputText = input.value || input.textContent || ""
-    return
-  }
-
 }
 
 onMounted(() => {

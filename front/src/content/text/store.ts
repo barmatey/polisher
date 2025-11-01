@@ -1,9 +1,8 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 
-export function getInputComponent(): HTMLElement | null {
+export function getInputComponent(): HTMLInputElement | HTMLTextAreaElement | null {
     const active = document.activeElement as HTMLElement | null;
-    console.log(active)
     if (active) {
         if (
             active.tagName === "INPUT" ||
@@ -47,8 +46,8 @@ export const useSelectedTextStore = defineStore(
     "useSelectedTextStore",
     () => {
         const selectedText = ref("")
-        const inputText = ref("")
-        const component = ref<HTMLElement | null>(null)
+        const component = ref<HTMLInputElement | HTMLTextAreaElement | null>(null)
+        const inputText = computed(() => component.value?.value || component.value?.textContent || "")
 
         return {selectedText, inputText, component}
     })
