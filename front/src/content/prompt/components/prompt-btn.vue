@@ -12,7 +12,6 @@ const store = useSelectedTextStore()
 
 
 async function handleClick() {
-  console.log(store.component)
   if (store.component) {
     addTextToInputComponent(store.component, "Added text")
   }
