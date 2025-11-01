@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import {ref, nextTick} from "vue";
+import {getPromptService} from "../../services.ts";
+import type {Prompt} from "../../domain.ts";
 
 interface P {
-  hotkey: string | null;
+  prompt: Prompt;
 }
 
 const e = defineEmits<{
-  (e: "updated", value: string | null): void
+  (e: "updated", item: Prompt): void
 }>()
 
 const p = defineProps<P>();
@@ -44,6 +46,7 @@ function onKeyDown(e: KeyboardEvent) {
   pressedKeys.add(normalizeKey(key));
 }
 
+
 function onKeyUp(e: KeyboardEvent) {
   e.preventDefault();
 
@@ -73,9 +76,10 @@ function openHandlerMode() {
   nextTick(() => inputEl.value?.focus());
 }
 
-function saveAndClose() {
+async function saveAndClose() {
+  await getPromptService().getAllUserPrompts
   handlerMode.value = false;
-  e("updated", value.value)
+  e("updated", {...p.prompt, hotkey: value.value});
 }
 
 function cancelAndClose() {
@@ -91,7 +95,7 @@ function cancelAndClose() {
         @click="openHandlerMode"
         class="cursor-pointer glass-btn outlined-glass-btn flex items-center"
     >
-      {{ value || p.hotkey || "Click to set hotkey" }}
+      {{ value || p.prompt.hotkey || "Click to set hotkey" }}
     </div>
 
     <div

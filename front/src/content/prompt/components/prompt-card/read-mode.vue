@@ -23,10 +23,8 @@ function handleDelete() {
   e("deleted")
 }
 
-function handleHotkeyUpdated(value: string | null) {
-  const updated = {...p.prompt}
-  updated.hotkey = value
-  e("updated", updated)
+function handleHotkeyUpdated(value: Prompt) {
+  e("updated", value)
 }
 </script>
 
@@ -35,7 +33,7 @@ function handleHotkeyUpdated(value: string | null) {
     <div>{{ p.prompt.title }}</div>
     <div class="flex gap-3 items-center">
       <prompt-hotkey
-          :hotkey="p.prompt.hotkey"
+          :prompt="p.prompt"
           @updated="handleHotkeyUpdated"
       />
       <simple-menu
