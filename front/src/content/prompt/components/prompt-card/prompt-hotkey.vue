@@ -91,7 +91,6 @@ async function saveAndClose() {
 
 <template>
   <div class="flex gap-2 items-center">
-    {{ p.prompt.hotkey }}
     <div
         v-if="!handlerMode"
         @click="openHandlerMode"
