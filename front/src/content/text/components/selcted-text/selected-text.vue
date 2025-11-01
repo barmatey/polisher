@@ -1,30 +1,19 @@
 <script setup lang="ts">
 import {onMounted, onBeforeUnmount} from "vue";
-import {useSelectedTextStore} from "../../store.ts";
+import {getInputComponent, useSelectedTextStore} from "../../store.ts";
 
 const store = useSelectedTextStore()
 
 function updateText() {
-  const selection = window.getSelection()?.toString().trim();
-  if (selection) {
-    store.text = selection;
-    return;
+  store.component = getInputComponent()
+  store.selectedText = window.getSelection()?.toString().trim() ?? ""
+
+  if (store.component) {
+    const input = store.component as HTMLInputElement | HTMLTextAreaElement
+    store.inputText = input.value || input.textContent || ""
+    return
   }
 
-  const active = document.activeElement as HTMLElement | null;
-  if (active) {
-    if (
-        active.tagName === "INPUT" ||
-        active.tagName === "TEXTAREA" ||
-        active.isContentEditable
-    ) {
-      const input = active as HTMLInputElement | HTMLTextAreaElement;
-      store.text = input.value || input.textContent || "";
-      return;
-    }
-  }
-
-  store.text = "";
 }
 
 onMounted(() => {
