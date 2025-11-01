@@ -43,8 +43,9 @@ function handleDeleted(item: Prompt) {
 }
 
 function handleUpdated(item: Prompt) {
-  prompts.value = prompts.value.map(x => x.id === item.id ? item : x)
-  console.log(item.hotkey)
+  const index = prompts.value.findIndex(x =>x.id === item.id)
+  prompts.value[index] = item
+  console.log(prompts.value.map(x => x.title + ": " + x.hotkey))
   clear()
 }
 
