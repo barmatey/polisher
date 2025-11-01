@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import GlassButton from "../../../atoms/glass-button.vue";
-import {addTextToInputComponent, useSelectedTextStore} from "../../text/store.ts";
+import {
+  replaceSelectedTextToInputComponent,
+  useSelectedTextStore
+} from "../../text/store.ts";
 
 interface P {
   label: string
@@ -13,7 +16,7 @@ const store = useSelectedTextStore()
 
 async function handleClick() {
   if (store.component) {
-    addTextToInputComponent(store.component, "Added text")
+    replaceSelectedTextToInputComponent(store.component, "Added text")
   }
 
 }
