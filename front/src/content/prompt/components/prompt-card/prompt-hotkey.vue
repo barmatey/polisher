@@ -77,9 +77,9 @@ function openHandlerMode() {
 }
 
 async function saveAndClose() {
-  await getPromptService().getAllUserPrompts
+  const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
   handlerMode.value = false;
-  e("updated", {...p.prompt, hotkey: value.value});
+  result.forEach(updated => e("updated", updated))
 }
 
 function cancelAndClose() {

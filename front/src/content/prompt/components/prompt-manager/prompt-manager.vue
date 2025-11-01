@@ -44,6 +44,7 @@ function handleDeleted(item: Prompt) {
 
 function handleUpdated(item: Prompt) {
   prompts.value = prompts.value.map(x => x.id === item.id ? item : x)
+  console.log(item.hotkey)
   clear()
 }
 
