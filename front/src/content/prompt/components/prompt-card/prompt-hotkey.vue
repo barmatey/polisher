@@ -83,7 +83,6 @@ function closeHandlerMode() {
 
 async function saveAndClose() {
   const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
-  console.log('from prompt hotkey => ', result.map(x => x.title + ": " + x.hotkey))
   e("updated", result)
   closeHandlerMode()
 }
