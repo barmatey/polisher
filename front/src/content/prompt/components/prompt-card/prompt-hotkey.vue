@@ -104,6 +104,7 @@ async function saveAndClose() {
         tabindex="0"
         @keydown.prevent="onKeyDown"
         @keyup.prevent="onKeyUp"
+        @focusout="closeHandlerMode"
         class="glass-btn flex items-center"
     >
       {{ value || "Press keys" }}
