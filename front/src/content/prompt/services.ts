@@ -5,7 +5,7 @@ export interface PromptService {
     updateHotkey: (targetId: string, hotkey: string | null) => Promise<Prompt[]>
 }
 
-const prompts = [
+const prompts: Prompt[] = [
     {
         id: '1',
         title: "Laconic",

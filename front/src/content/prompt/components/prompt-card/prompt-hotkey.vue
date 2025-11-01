@@ -78,8 +78,9 @@ function openHandlerMode() {
 
 async function saveAndClose() {
   const result = await getPromptService().updateHotkey(p.prompt.id, value.value)
-  handlerMode.value = false;
   result.forEach(updated => e("updated", updated))
+  handlerMode.value = false;
+  pressedKeys.clear();
 }
 
 function cancelAndClose() {
@@ -90,12 +91,13 @@ function cancelAndClose() {
 
 <template>
   <div class="flex gap-2 ">
+ {{ p.prompt.hotkey}}
     <div
         v-if="!handlerMode"
         @click="openHandlerMode"
         class="cursor-pointer glass-btn outlined-glass-btn flex items-center"
     >
-      {{ value || p.prompt.hotkey || "Click to set hotkey" }}
+      {{ p.prompt.hotkey || "Click to set hotkey" }}
     </div>
 
     <div
