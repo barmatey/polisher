@@ -5,6 +5,7 @@ import MyInputText from "../../../../atoms/my-input-text.vue";
 import MyTextarea from "../../../../atoms/my-textarea.vue";
 import SaveCancel from "../../../../atoms/save-cancel.vue";
 import ReplacementSelector from "./replacement-selector/replacement-selector.vue";
+import {getPromptService} from "../../services.ts";
 
 interface P {
   prompt: Prompt
@@ -28,8 +29,8 @@ function handleClickOnCancel() {
   e("cancel")
 }
 
-function handleClickOnSave() {
-  const updated = Object.assign({}, p.prompt, formData.value)
+async function handleClickOnSave() {
+  const updated = await getPromptService().updateOne(p.prompt.id, formData.value)
   e("updated", [updated])
 }
 

@@ -1,8 +1,9 @@
-import type {Prompt} from "./domain.ts";
+import type {Prompt, PromptForm} from "./domain.ts";
 
 export interface PromptService {
     getAllUserPrompts: () => Promise<Prompt[]>
     updateHotkey: (targetId: string, hotkey: string | null) => Promise<Prompt[]>
+    updateOne: (targetId: string, data: PromptForm) => Promise<Prompt>
 }
 
 const prompts: Prompt[] = [
@@ -57,5 +58,17 @@ export function getPromptService(): PromptService {
         return result
     }
 
-    return {getAllUserPrompts, updateHotkey}
+    async function updateOne(targetId: string, data: PromptForm): Promise<Prompt[]> {
+        for (let prompt of prompts) {
+            if (prompt.id === targetId) {
+                prompt.hotkey = data.hotkey
+                prompt.title = data.title
+                prompt.text = data.text
+                prompt.replacement = {...data.replacement}
+                return structuredClone(prompt)
+            }
+        }
+    }
+
+    return {getAllUserPrompts, updateHotkey, updateOne}
 }
