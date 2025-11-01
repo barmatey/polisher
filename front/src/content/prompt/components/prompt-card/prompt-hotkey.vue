@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick } from "vue";
+import {ref, nextTick} from "vue";
 
 interface P {
   hotkey: string | null;
@@ -8,7 +8,9 @@ interface P {
 const p = defineProps<P>();
 
 const value = ref("");
-const pressedKeys = new Set<string>(); // отслеживаем нажатые клавиши
+
+
+const pressedKeys = new Set<string>();
 const handlerMode = ref(false);
 const inputEl = ref<HTMLElement | null>(null);
 
@@ -20,12 +22,30 @@ function normalizeKey(key: string): string {
 function onKeyDown(e: KeyboardEvent) {
   e.preventDefault();
 
-  const key = normalizeKey(e.key);
-  pressedKeys.add(key);
+  const key = e.key;
+
+  // Esc → отменить ввод без сохранения
+  if (key === "Escape") {
+    cancelAndClose();
+    return;
+  }
+
+  // Backspace или Delete → очистить хоткей
+  if (key === "Backspace" || key === "Delete") {
+    value.value = "";
+    saveAndClose();
+    return;
+  }
+
+  pressedKeys.add(normalizeKey(key));
 }
 
 function onKeyUp(e: KeyboardEvent) {
   e.preventDefault();
+
+  const key = normalizeKey(e.key);
+
+  if (["Escape", "Backspace", "Delete"].includes(key)) return;
 
   const parts: string[] = [];
 
@@ -34,7 +54,6 @@ function onKeyUp(e: KeyboardEvent) {
   if (pressedKeys.has("Shift")) parts.push("Shift");
   if (pressedKeys.has("Meta")) parts.push("Meta");
 
-  const key = normalizeKey(e.key);
   if (!["Control", "Shift", "Alt", "Meta"].includes(key)) {
     parts.push(key);
   }
@@ -42,7 +61,6 @@ function onKeyUp(e: KeyboardEvent) {
   value.value = parts.join("+");
   pressedKeys.clear();
 
-  // после отпускания сохраняем
   saveAndClose();
 }
 
@@ -54,14 +72,19 @@ function openHandlerMode() {
 function saveAndClose() {
   handlerMode.value = false;
 }
+
+function cancelAndClose() {
+  pressedKeys.clear();
+  handlerMode.value = false;
+}
 </script>
 
 <template>
-  <div class="flex gap-2 border p-2 rounded cursor-text">
+  <div class="flex gap-2 ">
     <div
         v-if="!handlerMode"
         @click="openHandlerMode"
-        class="cursor-pointer"
+        class="cursor-pointer glass-btn outlined-glass-btn flex items-center"
     >
       {{ value || p.hotkey || "Click to set hotkey" }}
     </div>
@@ -72,8 +95,9 @@ function saveAndClose() {
         tabindex="0"
         @keydown.prevent="onKeyDown"
         @keyup.prevent="onKeyUp"
+        class="glass-btn flex items-center"
     >
-      {{ value || "Press keys..." }}
+      {{ value || "Press keys" }}
     </div>
   </div>
 </template>
