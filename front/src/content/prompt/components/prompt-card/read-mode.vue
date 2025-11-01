@@ -34,7 +34,10 @@ function handleHotkeyUpdated(value: string | null) {
   <div class="flex justify-between items-center">
     <div>{{ p.prompt.title }}</div>
     <div class="flex gap-3 items-center">
-      <prompt-hotkey :hotkey="p.prompt.hotkey" @updated="handleHotkeyUpdated"/>
+      <prompt-hotkey
+          :hotkey="p.prompt.hotkey"
+          @updated="handleHotkeyUpdated"
+      />
       <simple-menu
           @edit="handleClickOnEdit"
           @delete="handleDelete"
