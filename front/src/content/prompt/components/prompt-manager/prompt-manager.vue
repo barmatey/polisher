@@ -38,12 +38,12 @@ function handleCreated(item: Prompt) {
 }
 
 function handleDeleted(item: Prompt) {
-  prompts.value = context.value.prompts.filter(x => x.id !== item.id)
+  prompts.value = prompts.value.filter(x => x.id !== item.id)
   clear()
 }
 
 function handleUpdated(item: Prompt) {
-  prompts.value = context.value.prompts.map(x => x.id === item.id ? item : x)
+  prompts.value = prompts.value.map(x => x.id === item.id ? item : x)
   clear()
 }
 

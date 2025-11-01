@@ -12,6 +12,7 @@ const p = defineProps<P>()
 const e = defineEmits<{
   (e: "edit"): void
   (e: "deleted"): void
+  (e: "updated", value: Prompt): void
 }>()
 
 function handleClickOnEdit() {
@@ -21,13 +22,19 @@ function handleClickOnEdit() {
 function handleDelete() {
   e("deleted")
 }
+
+function handleHotkeyUpdated(value: string | null) {
+  const updated = {...p.prompt}
+  updated.hotkey = value
+  e("updated", updated)
+}
 </script>
 
 <template>
   <div class="flex justify-between items-center">
     <div>{{ p.prompt.title }}</div>
     <div class="flex gap-3 items-center">
-      <prompt-hotkey :hotkey="p.prompt.hotkey"/>
+      <prompt-hotkey :hotkey="p.prompt.hotkey" @updated="handleHotkeyUpdated"/>
       <simple-menu
           @edit="handleClickOnEdit"
           @delete="handleDelete"

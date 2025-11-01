@@ -36,7 +36,8 @@ function handleUpdated(item: Prompt) {
   e("updated", item)
   isEditMode.value = false
 }
-function handleDeleted(){
+
+function handleDeleted() {
   e("deleted")
 }
 
@@ -52,6 +53,7 @@ function handleDeleted(){
   <read-mode
       @edit="handleEdit"
       @deleted="handleDeleted"
+      @updated="handleUpdated"
       :prompt="prompt"
       v-else
   />

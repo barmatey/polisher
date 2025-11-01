@@ -5,9 +5,13 @@ interface P {
   hotkey: string | null;
 }
 
+const e = defineEmits<{
+  (e: "updated", value: string | null): void
+}>()
+
 const p = defineProps<P>();
 
-const value = ref("");
+const value = ref<string | null>(null);
 
 
 const pressedKeys = new Set<string>();
@@ -32,7 +36,7 @@ function onKeyDown(e: KeyboardEvent) {
 
   // Backspace или Delete → очистить хоткей
   if (key === "Backspace" || key === "Delete") {
-    value.value = "";
+    value.value = null;
     saveAndClose();
     return;
   }
@@ -71,6 +75,7 @@ function openHandlerMode() {
 
 function saveAndClose() {
   handlerMode.value = false;
+  e("updated", value.value)
 }
 
 function cancelAndClose() {
