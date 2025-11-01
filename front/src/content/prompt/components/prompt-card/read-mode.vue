@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Prompt} from "../../domain.ts";
 import SimpleMenu from "../../../../atoms/simple-menu.vue";
+import PromptHotkey from "./prompt-hotkey.vue";
 
 interface P {
   prompt: Prompt
@@ -26,7 +27,7 @@ function handleDelete() {
   <div class="flex justify-between items-center">
     <div>{{ p.prompt.title }}</div>
     <div class="flex gap-3 items-center">
-      <div>{{ p.prompt.hotkey }}</div>
+      <prompt-hotkey :hotkey="p.prompt.hotkey"/>
       <simple-menu
           @edit="handleClickOnEdit"
           @delete="handleDelete"
